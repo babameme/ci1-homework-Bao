@@ -50,6 +50,19 @@ public class GameObject {
         }
     }
 
+    public boolean collision(GameObject other){
+        float left1 = this.position.x - this.renderer.image.getWidth()/2;
+        float right1 = this.position.x + this.renderer.image.getWidth()/2;
+        float top1 = this.position.y - this.renderer.image.getHeight()/2;
+        float bottom1 = this.position.y + this.renderer.image.getHeight()/2;
+        float left2 = other.position.x - other.renderer.image.getWidth()/2;
+        float right2 = other.position.x + other.renderer.image.getWidth()/2;
+        float top2 = other.position.y - other.renderer.image.getHeight()/2;
+        float bottom2 = other.position.y + other.renderer.image.getHeight()/2;
+        return !(right1 < left2 || right2 < left1 || bottom1 < top2 || bottom2 < top1);
+
+    }
+    // Setter and Getter
     public Vector2D getPosition() {
         return position;
     }

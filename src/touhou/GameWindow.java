@@ -46,7 +46,7 @@ public class GameWindow extends Frame {
 
     private void addBackground() {
         Background background = new Background();
-        //background.getPosition().set(0, -2341);
+        background.getPosition().set(0, -2341);
         GameObject.add(background);
     }
 
@@ -121,17 +121,13 @@ public class GameWindow extends Frame {
         GameObject.runAll();
     }
 
-    @Override
-    public void update(Graphics g) {
+
+    private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
 
         GameObject.renderAll(backbufferGraphics);
 
-        g.drawImage(backbufferImage, 0, 0, null);
-    }
-
-    private void render() {
-        repaint();
+        windowGraphics.drawImage(backbufferImage, 0, 0, null);
     }
 }
