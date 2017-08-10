@@ -3,6 +3,7 @@ package touhou;
 import bases.GameObject;
 import tklibs.SpriteUtils;
 import bases.Constraints;
+import touhou.background.Background;
 import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
 import touhou.players.Player;
@@ -29,22 +30,33 @@ public class GameWindow extends Frame {
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
 
-    private BufferedImage background;
 
-    Player player = new Player();
-    EnemySpawner enemySpawner = new EnemySpawner(); // TODO: Viec cua lop: sua thanh game object
+    // TODO: Viec cua lop: sua thanh game object
 
     InputManager inputManager = new InputManager();
 
     public GameWindow() {
         pack();
-        background = SpriteUtils.loadImage("assets/images/background/0.png");
+        addBackground();
         addPlayer();
+        addEnemySpawner();
         setupGameLoop();
         setupWindow();
     }
 
+    private void addBackground() {
+        Background background = new Background();
+        //background.getPosition().set(0, -2341);
+        GameObject.add(background);
+    }
+
+    private void addEnemySpawner() {
+        EnemySpawner enemySpawner = new EnemySpawner();
+        GameObject.add(enemySpawner);
+    }
+
     private void addPlayer() {
+        Player player = new Player();
         player.setInputManager(this.inputManager);
         player.setContraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
         player.getPosition().set(384 / 2, 580);
@@ -107,14 +119,12 @@ public class GameWindow extends Frame {
 
     private void run() {
         GameObject.runAll();
-        enemySpawner.spawn();
     }
 
     @Override
     public void update(Graphics g) {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
-        backbufferGraphics.drawImage(background, 0, 0, null);
 
         GameObject.renderAll(backbufferGraphics);
 

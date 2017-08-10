@@ -10,7 +10,7 @@ import java.util.Vector;
 /**
  * Created by huynq on 8/9/17.
  */
-public class EnemySpawner {
+public class EnemySpawner extends GameObject{
     private FrameCounter spawnCounter;
     private Random random;
 
@@ -19,7 +19,10 @@ public class EnemySpawner {
         random = new Random();
     }
 
-    public void spawn() {
+    @Override
+    public void run() {
+        //System.out.println("Spawn");
+        super.run();
         if (spawnCounter.run()) {
             spawnCounter.reset();
             Enemy enemy = new Enemy();
