@@ -25,7 +25,9 @@ public class Background extends GameObject{
         position.addUp(0, SPEED);
     }
 
+    @Override
     public void render(Graphics2D g2d){
+        //System.out.println("Draw background");
         g2d.drawImage(image, (int) position.x, (int) position.y, null);
     }
 }

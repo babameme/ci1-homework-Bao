@@ -5,6 +5,7 @@ import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
 import bases.renderers.ImageRenderer;
+import touhou.ability.Ability;
 import touhou.inputs.InputManager;
 
 import java.util.Vector;
@@ -18,6 +19,8 @@ public class Player extends GameObject {
     private InputManager inputManager;
     private Constraints constraints;
 
+    private Ability ability;
+
     private FrameCounter coolDownCounter;
     private boolean spellLock;
 
@@ -25,6 +28,7 @@ public class Player extends GameObject {
         super();
         this.spellLock = false;
         this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
+        ability = new Ability(5, 30);
         this.coolDownCounter = new FrameCounter(3);
     }
 

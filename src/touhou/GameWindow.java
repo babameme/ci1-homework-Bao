@@ -121,6 +121,20 @@ public class GameWindow extends Frame {
         GameObject.runAll();
     }
 
+    /*@Override
+    public void update(Graphics g) {
+        backbufferGraphics.setColor(Color.black);
+        backbufferGraphics.fillRect(0, 0, 1024, 768);
+        //backbufferGraphics.drawImage(background, 0, 0, null);
+
+        GameObject.renderAll(backbufferGraphics);
+
+        g.drawImage(backbufferImage, 0, 0, null);
+    }
+
+    private void render() {
+        repaint();
+    }*/
 
     private void render() {
         backbufferGraphics.setColor(Color.black);
