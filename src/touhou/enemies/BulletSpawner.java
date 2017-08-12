@@ -15,6 +15,12 @@ public class BulletSpawner extends GameObject{
         random = new Random();
     }
 
+    public BulletSpawner(int maxCounter) {
+        super();
+        spawnCounter = new FrameCounter(maxCounter);
+        random = new Random();
+    }
+
     public void cast(int x, int y, int dx, int dy){
         EnemyBullet enemyBullet = new EnemyBullet();
         enemyBullet.getPosition().set(position.add(x,y));

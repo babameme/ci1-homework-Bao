@@ -29,4 +29,9 @@ public class Ability {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public void set(int damage, int health){
+        this.damage = damage;
+        this.health = health;
+    }
 }

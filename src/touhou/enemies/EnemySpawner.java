@@ -29,6 +29,7 @@ public class EnemySpawner extends GameObject{
             Enemy enemy = new Enemy();
             enemy.getPosition().set(random.nextInt(384), 40);
             GameObject.add(enemy);
+
             BulletSpawner bulletSpawner = new BulletSpawner();
             bulletSpawner.setPosition(enemy.getPosition());
             GameObject.add(bulletSpawner);

@@ -39,4 +39,12 @@ public class Enemy extends GameObject {
     private void fly() {
         position.addUp(direction);
     }
+
+    public Vector2D getDirection() {
+        return direction;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
 }
