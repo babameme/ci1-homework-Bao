@@ -50,8 +50,8 @@ public class GameWindow extends Frame {
     }
 
     private void addFireBall(int x, int y) {
-        Enemy enemy = new Enemy();
-        enemy.setRenderer(new ImageRenderer(SpriteUtils.loadImage("assets/images/players/explosions/4.png")));
+        Enemy enemy = new Enemy(4);
+        //enemy.setRenderer(new ImageRenderer(SpriteUtils.loadImage("assets/images/players/explosions/4.png")));
         enemy.getAbility().set(3, 40);
         enemy.getPosition().set(x, y);
         enemy.getDirection().set(0,0);

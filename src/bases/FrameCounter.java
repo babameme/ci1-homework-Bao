@@ -23,4 +23,25 @@ public class FrameCounter {
         this.count = 0;
     }
 
+    public void coolDown(){
+        count++;
+        if (count >= countMax)
+            count = 0;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getCountMax() {
+        return countMax;
+    }
+
+    public void setCountMax(int countMax) {
+        this.countMax = countMax;
+    }
 }

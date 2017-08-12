@@ -26,7 +26,7 @@ public class EnemySpawner extends GameObject{
         if (spawnCounter.run()) {
             //System.out.println("Add enemy");
             spawnCounter.reset();
-            Enemy enemy = new Enemy();
+            Enemy enemy = new Enemy(random.nextInt(2));
             enemy.getPosition().set(random.nextInt(384), 40);
             GameObject.add(enemy);
 

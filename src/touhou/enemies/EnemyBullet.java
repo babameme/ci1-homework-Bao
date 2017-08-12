@@ -7,16 +7,20 @@ import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.GameWindow;
 import touhou.ability.Ability;
+import touhou.animation.Animation;
+import touhou.animation.Sprite;
 
 public class EnemyBullet extends GameObject{
     private Vector2D direction;
     private Ability ability;
+    private Animation animation;
 
     private Constraints constraints;
 
     public EnemyBullet() {
         super();
-        this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/bullets/0.png"));
+        animation = new Animation(Sprite.getSprites("assets/images/enemies/bullets/",7), 10);
+        renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(1, 2);
         direction = new Vector2D(0, 7);
         constraints = new Constraints(31, 650, 8, 384);
@@ -26,6 +30,8 @@ public class EnemyBullet extends GameObject{
     public void run(){
         super.run();
         fly();
+        animation.update();
+        renderer.setImage(animation.getSprite());
         //constraints.make(position);
     }
 

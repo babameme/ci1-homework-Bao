@@ -5,6 +5,8 @@ import tklibs.SpriteUtils;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
 import touhou.ability.Ability;
+import touhou.animation.Animation;
+import touhou.animation.Sprite;
 
 import java.awt.*;
 
@@ -14,10 +16,27 @@ import java.awt.*;
 public class Enemy extends GameObject {
     private Vector2D direction;
     private Ability ability;
-
-    public Enemy() {
+    private Animation animation;
+    private boolean boss;
+    public Enemy(int type) {
         super();
-        renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/enemies/level0/blue/0.png"));
+        boss = false;
+        switch (type){
+            case 0:
+                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/pink/", 4),5);
+                break;
+            case 1:
+                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/blue/", 4),5);
+                break;
+            case 3:
+                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/black/", 9),5);
+                boss = true;
+                break;
+            case 4:
+                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/fireball/",1),5);
+                break;
+        }
+        renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(3, 10);
         direction = new Vector2D(0, 3);
     }
@@ -25,6 +44,8 @@ public class Enemy extends GameObject {
     // Controller
     public void run() {
         super.run();
+        animation.update();
+        renderer.setImage(animation.getSprite());
         fly();
         shoot();
     }

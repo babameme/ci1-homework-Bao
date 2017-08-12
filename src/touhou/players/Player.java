@@ -6,6 +6,8 @@ import bases.Constraints;
 import bases.FrameCounter;
 import bases.renderers.ImageRenderer;
 import touhou.ability.Ability;
+import touhou.animation.Animation;
+import touhou.animation.Sprite;
 import touhou.inputs.InputManager;
 
 import java.util.Vector;
@@ -18,6 +20,8 @@ public class Player extends GameObject {
 
     private InputManager inputManager;
     private Constraints constraints;
+    private boolean moveLeftRight;
+    private Animation walkLeft, walkRight, stand, animation;
 
     private Ability ability;
 
@@ -27,7 +31,11 @@ public class Player extends GameObject {
     public Player() {
         super();
         this.spellLock = false;
-        this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
+        walkLeft = new Animation(Sprite.getSprites("assets/images/players/left/", 6),5);
+        walkRight = new Animation(Sprite.getSprites("assets/images/players/right/", 6), 5);
+        stand = new Animation(Sprite.getSprites("assets/images/players/straight/", 7),5);
+        animation = stand;
+        renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(5, 30);
         this.coolDownCounter = new FrameCounter(3);
     }
@@ -38,21 +46,33 @@ public class Player extends GameObject {
 
     public void run() {
         super.run();
+        moveLeftRight = false;
 
         if (inputManager.upPressed)
             position.addUp(0, -SPEED);
         if (inputManager.downPressed)
             position.addUp(0, SPEED);
-        if (inputManager.leftPressed)
+        if (inputManager.leftPressed){
             position.addUp(-SPEED, 0);
-        if (inputManager.rightPressed)
+            moveLeftRight = true;
+            animation = walkLeft;
+        }
+        if (inputManager.rightPressed){
             position.addUp(SPEED, 0);
+            moveLeftRight = true;
+            animation = walkRight;
+        }
+        if (!moveLeftRight){
+            animation = stand;
+        }
 
         if (constraints != null) {
             constraints.make(position);
         }
 
         castSpell();
+        animation.update();
+        renderer.setImage(animation.getSprite());
     }
 
     private void castSpell() {
