@@ -9,7 +9,6 @@ import java.util.Random;
 public class BulletSpawner extends GameObject{
     private FrameCounter spawnCounter;
     Random random;
-    //TODO: BulletSpawner la child cua Enemy
     public BulletSpawner() {
         super();
         spawnCounter = new FrameCounter(120);

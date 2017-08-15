@@ -32,6 +32,8 @@ public class Player extends GameObject {
     private FrameCounter coolDownCounter;
     private boolean spellLock;
 
+    private SpellSpawner spellSpawner;
+
     public Player() {
         super();
         this.spellLock = false;
@@ -44,6 +46,7 @@ public class Player extends GameObject {
         this.coolDownCounter = new FrameCounter(3);
         boxCollider = new BoxCollider(10,10);
         this.children.add(boxCollider);
+        spellSpawner = new SpellSpawner(this.ability, this.screenPosition);
     }
 
     public void setContraints(Constraints contraints) {
@@ -83,10 +86,7 @@ public class Player extends GameObject {
 
     private void castSpell() {
         if (inputManager.xPressed && !spellLock) {
-            PlayerSpell newSpell = new PlayerSpell();
-            newSpell.getPosition().set(this.position.add(0, -30));
-            GameObject.add(newSpell);
-
+            spellSpawner.shoot(screenPosition);
             spellLock = true;
             coolDownCounter.reset();
         }

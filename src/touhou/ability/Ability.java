@@ -3,15 +3,18 @@ package touhou.ability;
 public class Ability {
     private int damage;
     private int health;
+    private int power;
 
     public Ability(int damage, int health) {
         this.damage = damage;
         this.health = health;
+        this.power = 30;
     }
 
     public Ability() {
         this.damage = 0;
         this.health = 0;
+        this.power = 0;
     }
 
     public int getDamage() {
@@ -33,5 +36,9 @@ public class Ability {
     public void set(int damage, int health){
         this.damage = damage;
         this.health = health;
+    }
+
+    public int getPower() {
+        return power;
     }
 }

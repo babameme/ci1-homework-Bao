@@ -22,19 +22,21 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     private Ability ability;
     private Animation animation;
     private BoxCollider boxCollider;
+    private Vector2D direction;
 
     public PlayerSpell() {
         super();
         animation = new Animation(Sprite.getSprites("assets/images/sphere/", 4), 10);
         renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(2, 1);
+        direction = new Vector2D(0, -10);
         boxCollider = new BoxCollider(20,20);
         this.children.add(boxCollider);
     }
 
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
-        position.addUp(0, -10);
+        position.addUp(direction);
         animation.update();
         renderer.setImage(animation.getSprite());
         hitEnemy();
@@ -50,5 +52,9 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
 
     public BoxCollider getBoxCollider() {
         return boxCollider;
+    }
+
+    public Vector2D getDirection() {
+        return direction;
     }
 }
