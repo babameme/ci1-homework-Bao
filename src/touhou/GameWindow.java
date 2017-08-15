@@ -9,6 +9,7 @@ import touhou.enemies.BulletSpawner;
 import touhou.enemies.Enemy;
 import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
+import touhou.item.ItemSpawn;
 import touhou.players.Player;
 
 import java.awt.*;
@@ -43,6 +44,7 @@ public class GameWindow extends Frame {
         addBackground();
         addPlayer();
         addEnemySpawner();
+        addItemSpawn();
         setupGameLoop();
         setupWindow();
     }
@@ -65,6 +67,11 @@ public class GameWindow extends Frame {
         player.getPosition().set(384 / 2, 580);
 
         GameObject.add(player);
+    }
+
+    private void addItemSpawn(){
+        ItemSpawn itemSpawn = new ItemSpawn();
+        GameObject.add(itemSpawn);
     }
 
     private void setupGameLoop() {

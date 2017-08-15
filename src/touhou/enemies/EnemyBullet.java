@@ -4,14 +4,17 @@ import bases.Constraints;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
+import bases.physics.Physics;
+import bases.physics.PhysicsBody;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.GameWindow;
 import touhou.ability.Ability;
 import touhou.animation.Animation;
 import touhou.animation.Sprite;
+import touhou.players.Player;
 
-public class EnemyBullet extends GameObject{
+public class EnemyBullet extends GameObject implements PhysicsBody{
     private Vector2D direction;
     private Ability ability;
     private Animation animation;
@@ -36,7 +39,17 @@ public class EnemyBullet extends GameObject{
         fly();
         animation.update();
         renderer.setImage(animation.getSprite());
+        hitPlayer();
         //constraints.make(position);
+    }
+
+    private void hitPlayer() {
+        Player player = Physics.collideWithPlayer(this.boxCollider);
+        if (player != null){
+            player.getAbility().hurtHealth(this.ability.getDamage());
+            this.setActive(false);
+            // TODO: Co nen set active = false o ngay day
+        }
     }
 
     public void fly(){

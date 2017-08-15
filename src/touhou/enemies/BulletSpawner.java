@@ -29,28 +29,28 @@ public class BulletSpawner extends GameObject{
     }
 
     public void castType1(){
-        for (int i = -4; i <=4; i++) {
+        for (int i = -3; i <=3; i++) {
             if (i == 0) continue;
             cast(i * 10, 20, i * 2, 0);
         }
     }
 
     public void castType2(){
-        for (int i = -4; i <=4 ; i++) {
+        for (int i = -3; i <=3 ; i++) {
             if (i == 0) continue;
             cast(i * 10, -20, i * 2, 0);
         }
     }
 
     public void castType3(){
-        for (int i = -4; i <=4 ; i++) {
+        for (int i = -3; i <=3 ; i++) {
             if (i == 0) continue;
             cast(-20, i * 10, 0, i * 2);
         }
     }
 
     public void castType4(){
-        for (int i = -4; i <=4 ; i++) {
+        for (int i = -3; i <=3 ; i++) {
             if (i == 0) continue;
             cast(20, i * 10, 0, i * 2);
         }
@@ -66,13 +66,13 @@ public class BulletSpawner extends GameObject{
     }
 
     public void castType6(){
-        for (int i = -4; i <= 4; i++){
+        for (int i = -3; i <= 3; i++){
             cast(i * 10, 20, i, 2);
         }
     }
 
     public void castType0(){
-        for (int i = -4; i <= 4; i++){
+        for (int i = -3; i <= 3; i++){
             cast(i * 10, -20, i, -2);
         }
     }

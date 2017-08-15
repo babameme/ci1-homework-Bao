@@ -28,7 +28,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
         super();
         animation = new Animation(Sprite.getSprites("assets/images/sphere/", 4), 10);
         renderer = new ImageRenderer(animation.getSprite());
-        ability = new Ability(2, 1);
+        ability = new Ability(2, 2);
         direction = new Vector2D(0, -10);
         boxCollider = new BoxCollider(20,20);
         this.children.add(boxCollider);
@@ -45,8 +45,14 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     private void hitEnemy() {
         Enemy enemy = Physics.collideWithEnemy(this.boxCollider);
         if (enemy != null){
-            enemy.setActive(false);
-            this.isActive = false;
+            enemy.getAbility().hurtHealth(this.ability.getDamage());
+            this.ability.hurtHealth(enemy.getAbility().getDamage());
+            if (enemy.getAbility().getHealth() == 0) {
+                enemy.setActive(false);
+            }
+            if (this.getAbility().getHealth() == 0) {
+                this.isActive = false;
+            }
         }
     }
 
@@ -56,5 +62,9 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
 
     public Vector2D getDirection() {
         return direction;
+    }
+
+    public Ability getAbility() {
+        return ability;
     }
 }

@@ -1,5 +1,6 @@
 package touhou.background;
 
+import bases.Constraints;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
@@ -10,10 +11,13 @@ import java.awt.image.BufferedImage;
 
 public class Background extends GameObject{
     private static final float SPEED = 1;
-    private BufferedImage image = SpriteUtils.loadImage("assets/images/background/0.png");
+    private BufferedImage image;
+    private Constraints constraints;
 
     public Background() {
         super();
+        image = SpriteUtils.loadImage("assets/images/background/0.png");
+        constraints = new Constraints(-2341, 0,0,0);
     }
 
     @Override
@@ -24,6 +28,7 @@ public class Background extends GameObject{
 
     public void move(){
         position.addUp(0, SPEED);
+        constraints.make(position);
     }
 
     @Override

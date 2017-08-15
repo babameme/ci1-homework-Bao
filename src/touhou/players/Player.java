@@ -3,6 +3,8 @@ package touhou.players;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
+import bases.physics.Physics;
+import bases.physics.PhysicsBody;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
@@ -11,13 +13,14 @@ import touhou.ability.Ability;
 import touhou.animation.Animation;
 import touhou.animation.Sprite;
 import touhou.inputs.InputManager;
+import touhou.item.Item;
 
 import java.util.Vector;
 
 /**
  * Created by huynq on 8/2/17.
  */
-public class Player extends GameObject {
+public class Player extends GameObject implements PhysicsBody{
     private static final int SPEED = 5;
 
     private InputManager inputManager;
@@ -80,8 +83,10 @@ public class Player extends GameObject {
         }
 
         castSpell();
+        getItem();
         animation.update();
         renderer.setImage(animation.getSprite());
+        System.out.println(Integer.toString(ability.getDamage()) + " " + Integer.toString(ability.getHealth()) + " " + Integer.toString(ability.getPower()));
     }
 
     private void castSpell() {
@@ -94,6 +99,15 @@ public class Player extends GameObject {
         unlockSpell();
     }
 
+    private void getItem(){
+        Item item = Physics.collideWithItem(this.boxCollider);
+        if (item != null){
+            this.ability.addUp(item.getAbility());
+            item.getAbility().setHealth(0);
+            item.setActive(false);
+        }
+    }
+
     private void unlockSpell() {
         if (spellLock) {
             if (coolDownCounter.run()) {
@@ -104,6 +118,10 @@ public class Player extends GameObject {
 
     public void setInputManager(InputManager inputManager) {
         this.inputManager = inputManager;
+    }
+
+    public Ability getAbility() {
+        return ability;
     }
 
     public BoxCollider getBoxCollider() {
