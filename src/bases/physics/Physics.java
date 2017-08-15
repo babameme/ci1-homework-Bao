@@ -1,5 +1,6 @@
 package bases.physics;
 
+import bases.GameObject;
 import touhou.enemies.Enemy;
 import touhou.item.Item;
 import touhou.players.Player;
@@ -44,5 +45,14 @@ public class Physics {
 
     public static void add(PhysicsBody body) {
         bodies.add(body);
+    }
+
+    public static void replace(GameObject a, GameObject newA){
+        for (int i = 0; i < bodies.size(); i++) {
+            if (bodies.get(i) == (PhysicsBody) a){
+                bodies.setElementAt((PhysicsBody)newA, i);
+                break;
+            }
+        }
     }
 }

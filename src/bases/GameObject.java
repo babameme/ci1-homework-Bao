@@ -50,6 +50,7 @@ public class GameObject {
                 find = true;
                 gameObject.setActive(true);
                 gameObjects.setElementAt(gameObject, i);
+                Physics.replace(gameObjects.get(i), gameObject);
                 break;
             }
         }
