@@ -40,8 +40,10 @@ public class Player extends GameObject {
         stand = new Animation(Sprite.getSprites("assets/images/players/straight/", 7),5);
         animation = stand;
         renderer = new ImageRenderer(animation.getSprite());
-        ability = new Ability(5, 30);
+        ability = new Ability(3, 50);
         this.coolDownCounter = new FrameCounter(3);
+        boxCollider = new BoxCollider(10,10);
+        this.children.add(boxCollider);
     }
 
     public void setContraints(Constraints contraints) {

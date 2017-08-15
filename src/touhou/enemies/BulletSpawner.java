@@ -24,7 +24,7 @@ public class BulletSpawner extends GameObject{
 
     public void cast(int x, int y, int dx, int dy){
         EnemyBullet enemyBullet = new EnemyBullet();
-        enemyBullet.getPosition().set(position.add(x,y));
+        enemyBullet.getPosition().set(screenPosition.add(x,y));
         enemyBullet.getDirection().set(dx, dy);
         GameObject.add(enemyBullet);
     }

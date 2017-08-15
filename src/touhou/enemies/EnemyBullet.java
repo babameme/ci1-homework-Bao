@@ -26,6 +26,8 @@ public class EnemyBullet extends GameObject{
         ability = new Ability(1, 2);
         direction = new Vector2D(0, 7);
         constraints = new Constraints(31, 650, 8, 384);
+        boxCollider = new BoxCollider(16,16);
+        this.children.add(boxCollider);
     }
 
     @Override

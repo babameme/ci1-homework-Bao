@@ -91,6 +91,10 @@ public class GameObject {
             this.position = position;
     }
 
+    public Vector2D getScreenPosition() {
+        return screenPosition;
+    }
+
     public ImageRenderer getRenderer() {
         return renderer;
     }
@@ -98,5 +102,9 @@ public class GameObject {
     public void setRenderer(ImageRenderer renderer) {
         if (renderer != null)
             this.renderer = renderer;
+    }
+
+    public ArrayList<GameObject> getChildren() {
+        return children;
     }
 }
