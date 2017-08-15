@@ -86,7 +86,7 @@ public class Player extends GameObject implements PhysicsBody{
         getItem();
         animation.update();
         renderer.setImage(animation.getSprite());
-        System.out.println(Integer.toString(ability.getDamage()) + " " + Integer.toString(ability.getHealth()) + " " + Integer.toString(ability.getPower()));
+        //System.out.println(Integer.toString(ability.getDamage()) + " " + Integer.toString(ability.getHealth()) + " " + Integer.toString(ability.getPower()));
     }
 
     private void castSpell() {

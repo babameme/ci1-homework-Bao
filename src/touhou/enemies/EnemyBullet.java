@@ -28,7 +28,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(1, 2);
         direction = new Vector2D(0, 7);
-        constraints = new Constraints(31, 650, 8, 384);
+        constraints = new Constraints(0, 768, 0, 384);
         boxCollider = new BoxCollider(16,16);
         this.children.add(boxCollider);
     }
@@ -36,6 +36,9 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
     @Override
     public void run(Vector2D parentPosition){
         super.run(parentPosition);
+        if (constraints.isOut(screenPosition) || ability.getHealth() <= 0){
+            this.setActive(false);
+        }
         fly();
         animation.update();
         renderer.setImage(animation.getSprite());

@@ -44,7 +44,18 @@ public class GameObject {
     }
 
     public static void add(GameObject gameObject) {
-        newGameObjects.add(gameObject);
+        boolean find = false;
+        for (int i = 0; i < gameObjects.size(); i++) {
+            if ((!gameObjects.get(i).isActive()) && gameObjects.get(i).getClass() == gameObject.getClass()){
+                find = true;
+                gameObject.setActive(true);
+                gameObjects.setElementAt(gameObject, i);
+                break;
+            }
+        }
+        if (!find) {
+            newGameObjects.add(gameObject);
+        }
     }
 
     public GameObject() {
@@ -107,4 +118,6 @@ public class GameObject {
     public ArrayList<GameObject> getChildren() {
         return children;
     }
+
+
 }

@@ -63,4 +63,13 @@ public class Ability {
     public void setPower(int power) {
         this.power = power;
     }
+
+    @Override
+    public String toString() {
+        return "Ability{" +
+                "damage=" + damage +
+                ", health=" + health +
+                ", power=" + power +
+                '}';
+    }
 }

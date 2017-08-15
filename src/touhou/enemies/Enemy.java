@@ -1,5 +1,6 @@
 package touhou.enemies;
 
+import bases.Constraints;
 import bases.GameObject;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
@@ -21,6 +22,7 @@ public class Enemy extends GameObject implements PhysicsBody{
     private Animation animation;
     private boolean boss;
     private BoxCollider boxCollider;
+    private Constraints constraints;
     public Enemy(int type) {
         super();
         boss = false;
@@ -42,13 +44,17 @@ public class Enemy extends GameObject implements PhysicsBody{
         renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(3, 10);
         direction = new Vector2D(0, 3);
-        boxCollider = new BoxCollider(20,20);
+        boxCollider = new BoxCollider(25,25);
+        constraints = new Constraints(0, 768, 0, 384);
         this.children.add(boxCollider);
     }
 
     // Controller
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
+        if (constraints.isOut(screenPosition) || ability.getHealth() <= 0){
+            this.setActive(false);
+        }
         animation.update();
         renderer.setImage(animation.getSprite());
         fly();

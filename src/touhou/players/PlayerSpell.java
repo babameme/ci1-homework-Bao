@@ -1,5 +1,6 @@
 package touhou.players;
 
+import bases.Constraints;
 import bases.GameObject;
 import bases.physics.BoxCollider;
 import bases.physics.Physics;
@@ -23,6 +24,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     private Animation animation;
     private BoxCollider boxCollider;
     private Vector2D direction;
+    private Constraints constraints;
 
     public PlayerSpell() {
         super();
@@ -31,11 +33,15 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
         ability = new Ability(2, 2);
         direction = new Vector2D(0, -10);
         boxCollider = new BoxCollider(20,20);
+        constraints = new Constraints(0, 768, 0, 384);
         this.children.add(boxCollider);
     }
 
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
+        if (constraints.isOut(screenPosition) || ability.getHealth() <= 0){
+            this.setActive(false);
+        }
         position.addUp(direction);
         animation.update();
         renderer.setImage(animation.getSprite());
@@ -45,6 +51,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody{
     private void hitEnemy() {
         Enemy enemy = Physics.collideWithEnemy(this.boxCollider);
         if (enemy != null){
+            System.out.println(enemy.getAbility().toString());
             enemy.getAbility().hurtHealth(this.ability.getDamage());
             this.ability.hurtHealth(enemy.getAbility().getDamage());
             if (enemy.getAbility().getHealth() == 0) {
