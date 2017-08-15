@@ -2,13 +2,14 @@ package touhou.enemies;
 
 import bases.FrameCounter;
 import bases.GameObject;
+import bases.Vector2D;
 
 import java.util.Random;
 
 public class BulletSpawner extends GameObject{
     private FrameCounter spawnCounter;
     Random random;
-
+    //TODO: BulletSpawner la child cua Enemy
     public BulletSpawner() {
         super();
         spawnCounter = new FrameCounter(120);
@@ -78,8 +79,8 @@ public class BulletSpawner extends GameObject{
     }
 
     @Override
-    public void run() {
-        super.run();
+    public void run(Vector2D parentPosition) {
+        super.run(parentPosition);
         if (spawnCounter.run()) {
             spawnCounter.reset();
             switch (random.nextInt(7)){

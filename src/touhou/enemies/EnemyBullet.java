@@ -3,6 +3,7 @@ package touhou.enemies;
 import bases.Constraints;
 import bases.GameObject;
 import bases.Vector2D;
+import bases.physics.BoxCollider;
 import bases.renderers.ImageRenderer;
 import tklibs.SpriteUtils;
 import touhou.GameWindow;
@@ -14,6 +15,7 @@ public class EnemyBullet extends GameObject{
     private Vector2D direction;
     private Ability ability;
     private Animation animation;
+    private BoxCollider boxCollider;
 
     private Constraints constraints;
 
@@ -27,8 +29,8 @@ public class EnemyBullet extends GameObject{
     }
 
     @Override
-    public void run(){
-        super.run();
+    public void run(Vector2D parentPosition){
+        super.run(parentPosition);
         fly();
         animation.update();
         renderer.setImage(animation.getSprite());
@@ -39,8 +41,11 @@ public class EnemyBullet extends GameObject{
         position.addUp(direction);
     }
 
-
     public Vector2D getDirection() {
         return direction;
+    }
+
+    public BoxCollider getBoxCollider() {
+        return boxCollider;
     }
 }

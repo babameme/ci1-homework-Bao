@@ -28,7 +28,7 @@ public class GameWindow extends Frame {
 
     private long lastTimeUpdate;
     private long currentTime;
-    private Graphics2D windowGraphics;
+    //private Graphics2D windowGraphics;
 
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
@@ -43,23 +43,8 @@ public class GameWindow extends Frame {
         addBackground();
         addPlayer();
         addEnemySpawner();
-        addFireBall(30, 350);
-        addFireBall(351,350);
         setupGameLoop();
         setupWindow();
-    }
-
-    private void addFireBall(int x, int y) {
-        Enemy enemy = new Enemy(4);
-        //enemy.setRenderer(new ImageRenderer(SpriteUtils.loadImage("assets/images/players/explosions/4.png")));
-        enemy.getAbility().set(3, 40);
-        enemy.getPosition().set(x, y);
-        enemy.getDirection().set(0,0);
-        GameObject.add(enemy);
-
-        BulletSpawner bulletSpawner = new BulletSpawner(60);
-        bulletSpawner.setPosition(enemy.getPosition());
-        GameObject.add(bulletSpawner);
     }
 
     private void addBackground() {
@@ -95,7 +80,7 @@ public class GameWindow extends Frame {
         this.backbufferImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         this.backbufferGraphics = (Graphics2D) this.backbufferImage.getGraphics();
 
-        this.windowGraphics = (Graphics2D) this.getGraphics();
+        //this.windowGraphics = (Graphics2D) this.getGraphics();
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -139,27 +124,18 @@ public class GameWindow extends Frame {
         GameObject.runAll();
     }
 
-    /*@Override
+    @Override
     public void update(Graphics g) {
+        g.drawImage(backbufferImage, 0, 0, null);
+    }
+
+    private void render() {
         backbufferGraphics.setColor(Color.black);
         backbufferGraphics.fillRect(0, 0, 1024, 768);
         //backbufferGraphics.drawImage(background, 0, 0, null);
 
         GameObject.renderAll(backbufferGraphics);
-
-        g.drawImage(backbufferImage, 0, 0, null);
-    }
-
-    private void render() {
         repaint();
-    }*/
-
-    private void render() {
-        backbufferGraphics.setColor(Color.black);
-        backbufferGraphics.fillRect(0, 0, 384, 768);
-
-        GameObject.renderAll(backbufferGraphics);
-
-        windowGraphics.drawImage(backbufferImage, 0, 0, null);
     }
+
 }

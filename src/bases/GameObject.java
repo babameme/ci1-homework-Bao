@@ -1,9 +1,12 @@
 package bases;
 
+import bases.physics.Physics;
+import bases.physics.PhysicsBody;
 import bases.renderers.ImageRenderer;
 import touhou.players.PlayerSpell;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -11,7 +14,10 @@ import java.util.Vector;
  */
 public class GameObject {
     protected Vector2D position;
+    protected Vector2D screenPosition;
     protected ImageRenderer renderer;
+    protected ArrayList<GameObject> children;
+    protected boolean isActive;
 
     private static Vector<GameObject> gameObjects = new Vector<>();
     private static Vector<GameObject> newGameObjects = new Vector<>();
@@ -19,16 +25,21 @@ public class GameObject {
     public static void runAll() {
         // instanceof
         for (GameObject gameObject : gameObjects) {
-            gameObject.run();
+            if (gameObject.isActive)
+                gameObject.run(new Vector2D(0,0));
         }
-
+        for (GameObject newGameObject : newGameObjects){
+            if (newGameObject instanceof PhysicsBody)
+                Physics.add((PhysicsBody) newGameObject);
+        }
         gameObjects.addAll(newGameObjects);
         newGameObjects.clear();
     }
 
     public static void renderAll(Graphics2D g2d) {
         for (GameObject gameObject : gameObjects) {
-            gameObject.render(g2d);
+            if (gameObject.isActive)
+                gameObject.render(g2d);
         }
     }
 
@@ -38,30 +49,38 @@ public class GameObject {
 
     public GameObject() {
         position = new Vector2D();
+        screenPosition = new Vector2D();
+        children = new ArrayList<>();
+        isActive = true;
     }
 
-    public void run() {
-
+    public void run(Vector2D parentPosition) {
+        screenPosition = parentPosition.add(position);
+        for (GameObject child : children){
+            if (child.isActive)
+                child.run(screenPosition);
+        }
     }
 
     public void render(Graphics2D g2d) {
         if (renderer != null) {
             renderer.render(g2d, position); // null.render() => NullPointerException
         }
+        for (GameObject child : children){
+            if (child.isActive)
+                child.render(g2d);
+        }
     }
 
-    public boolean collision(GameObject other){
-        float left1 = this.position.x - this.renderer.image.getWidth()/2;
-        float right1 = this.position.x + this.renderer.image.getWidth()/2;
-        float top1 = this.position.y - this.renderer.image.getHeight()/2;
-        float bottom1 = this.position.y + this.renderer.image.getHeight()/2;
-        float left2 = other.position.x - other.renderer.image.getWidth()/2;
-        float right2 = other.position.x + other.renderer.image.getWidth()/2;
-        float top2 = other.position.y - other.renderer.image.getHeight()/2;
-        float bottom2 = other.position.y + other.renderer.image.getHeight()/2;
-        return !(right1 < left2 || right2 < left1 || bottom1 < top2 || bottom2 < top1);
 
+    public boolean isActive() {
+        return isActive;
     }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     // Setter and Getter
     public Vector2D getPosition() {
         return position;

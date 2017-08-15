@@ -1,6 +1,8 @@
 package touhou.players;
 
 import bases.GameObject;
+import bases.Vector2D;
+import bases.physics.BoxCollider;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
@@ -25,6 +27,8 @@ public class Player extends GameObject {
 
     private Ability ability;
 
+    private BoxCollider boxCollider;
+
     private FrameCounter coolDownCounter;
     private boolean spellLock;
 
@@ -44,8 +48,8 @@ public class Player extends GameObject {
         this.constraints = contraints;
     }
 
-    public void run() {
-        super.run();
+    public void run(Vector2D parentPosition) {
+        super.run(parentPosition);
         moveLeftRight = false;
 
         if (inputManager.upPressed)
@@ -98,5 +102,9 @@ public class Player extends GameObject {
 
     public void setInputManager(InputManager inputManager) {
         this.inputManager = inputManager;
+    }
+
+    public BoxCollider getBoxCollider() {
+        return boxCollider;
     }
 }

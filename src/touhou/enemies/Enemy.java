@@ -1,6 +1,8 @@
 package touhou.enemies;
 
 import bases.GameObject;
+import bases.physics.BoxCollider;
+import bases.physics.PhysicsBody;
 import tklibs.SpriteUtils;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
@@ -13,37 +15,40 @@ import java.awt.*;
 /**
  * Created by huynq on 8/9/17.
  */
-public class Enemy extends GameObject {
+public class Enemy extends GameObject implements PhysicsBody{
     private Vector2D direction;
     private Ability ability;
     private Animation animation;
     private boolean boss;
+    private BoxCollider boxCollider;
     public Enemy(int type) {
         super();
         boss = false;
         switch (type){
             case 0:
                 animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/pink/", 4),5);
+                ability = new Ability(3, 15);
                 break;
             case 1:
                 animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/blue/", 4),5);
+                ability = new Ability(4, 10);
                 break;
             case 3:
                 animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/black/", 9),5);
+                ability = new Ability(5, 30);
                 boss = true;
-                break;
-            case 4:
-                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/fireball/",1),5);
                 break;
         }
         renderer = new ImageRenderer(animation.getSprite());
         ability = new Ability(3, 10);
         direction = new Vector2D(0, 3);
+        boxCollider = new BoxCollider(20,20);
+        this.children.add(boxCollider);
     }
 
     // Controller
-    public void run() {
-        super.run();
+    public void run(Vector2D parentPosition) {
+        super.run(parentPosition);
         animation.update();
         renderer.setImage(animation.getSprite());
         fly();
@@ -67,5 +72,9 @@ public class Enemy extends GameObject {
 
     public Ability getAbility() {
         return ability;
+    }
+
+    public BoxCollider getBoxCollider() {
+        return boxCollider;
     }
 }
