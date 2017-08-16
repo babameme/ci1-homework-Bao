@@ -29,6 +29,7 @@ public class GameWindow extends Frame {
 
     private long lastTimeUpdate;
     private long currentTime;
+    private Player player;
     //private Graphics2D windowGraphics;
 
     private BufferedImage backbufferImage;
@@ -61,7 +62,7 @@ public class GameWindow extends Frame {
     }
 
     private void addPlayer() {
-        Player player = new Player();
+        player = new Player();
         player.setInputManager(this.inputManager);
         player.setContraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
         player.getPosition().set(384 / 2, 580);
@@ -79,7 +80,7 @@ public class GameWindow extends Frame {
     }
 
     private void setupWindow() {
-        this.setSize(384, 768);
+        this.setSize(700, 768);
 
         this.setTitle("Touhou - Remade by QHuyDTVT");
         this.setVisible(true);
@@ -138,7 +139,15 @@ public class GameWindow extends Frame {
 
     private void render() {
         backbufferGraphics.setColor(Color.black);
-        backbufferGraphics.fillRect(0, 0, 1024, 768);
+        backbufferGraphics.fillRect(0, 0, 700, 768);
+        backbufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        Font font = new Font("Serif", Font.PLAIN, 21);
+        backbufferGraphics.setFont(font);
+        backbufferGraphics.setColor(Color.white);
+        backbufferGraphics.drawString("Your health : " + Integer.toString(player.getAbility().getHealth()), 400, 50);
+        backbufferGraphics.drawString("Your damage : " + Integer.toString(player.getAbility().getDamage()), 400, 90);
+        backbufferGraphics.drawString("Your power : " + Integer.toString(player.getAbility().getPower()), 400, 130);
         //backbufferGraphics.drawImage(background, 0, 0, null);
 
         GameObject.renderAll(backbufferGraphics);

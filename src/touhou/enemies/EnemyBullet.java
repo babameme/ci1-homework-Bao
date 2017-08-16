@@ -50,6 +50,8 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         Player player = Physics.collideWithPlayer(this.boxCollider);
         if (player != null){
             player.getAbility().hurtHealth(this.ability.getDamage());
+            player.getAbility().setPower(player.DEFAULTPOWER);
+            player.getAbility().setDamage(player.DEFAULTDAMAGE);
             this.setActive(false);
             // TODO: Co nen set active = false o ngay day
         }

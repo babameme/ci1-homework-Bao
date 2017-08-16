@@ -5,7 +5,6 @@ import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.Physics;
 import bases.physics.PhysicsBody;
-import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
 import bases.renderers.ImageRenderer;
@@ -14,21 +13,23 @@ import touhou.animation.Animation;
 import touhou.animation.Sprite;
 import touhou.inputs.InputManager;
 import touhou.item.Item;
-
-import java.util.Vector;
+import touhou.support.EngineArm;
+import touhou.support.SpellSpawnerArm;
 
 /**
  * Created by huynq on 8/2/17.
  */
 public class Player extends GameObject implements PhysicsBody{
     private static final int SPEED = 5;
-
+    public static final int DEFAULTDAMAGE = 3;
+    public static final int DEFAULTPOWER = 0;
     private InputManager inputManager;
     private Constraints constraints;
     private boolean moveLeftRight;
     private Animation walkLeft, walkRight, stand, animation;
 
     private Ability ability;
+    private Ability defaultAbility;
 
     private BoxCollider boxCollider;
 
@@ -36,6 +37,8 @@ public class Player extends GameObject implements PhysicsBody{
     private boolean spellLock;
 
     private SpellSpawner spellSpawner;
+    private EngineArm engineArm1, engineArm2;
+    private SpellSpawnerArm spellSpawnerArm1, spellSpawnerArm2;
 
     public Player() {
         super();
@@ -45,11 +48,22 @@ public class Player extends GameObject implements PhysicsBody{
         stand = new Animation(Sprite.getSprites("assets/images/players/straight/", 7),5);
         animation = stand;
         renderer = new ImageRenderer(animation.getSprite());
-        ability = new Ability(3, 50);
+        ability = new Ability(DEFAULTDAMAGE, 20, DEFAULTPOWER);
         this.coolDownCounter = new FrameCounter(3);
         boxCollider = new BoxCollider(10,10);
         this.children.add(boxCollider);
-        spellSpawner = new SpellSpawner(this.ability, this.screenPosition);
+        spellSpawner = new SpellSpawner(this.ability);
+
+        engineArm1 = new EngineArm(new Vector2D(-40, 0));
+        engineArm2 = new EngineArm(new Vector2D(40, 0));
+        this.children.add(engineArm1);
+        this.children.add(engineArm2);
+        System.out.println("##################################");
+        spellSpawnerArm1 = new SpellSpawnerArm(this.ability);
+        engineArm1.getChildren().add(spellSpawnerArm1);
+        spellSpawnerArm2 = new SpellSpawnerArm(this.ability);
+        engineArm2.getChildren().add(spellSpawnerArm2);
+
     }
 
     public void setContraints(Constraints contraints) {

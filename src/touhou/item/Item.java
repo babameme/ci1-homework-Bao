@@ -17,7 +17,7 @@ public class Item extends GameObject implements PhysicsBody{
 
     public Item(int type) {
         super();
-        if (type <= 2){
+        if (type <= 1){
             type = 0;
         }
         else if (type <= 6){
@@ -29,7 +29,7 @@ public class Item extends GameObject implements PhysicsBody{
         switch (type){
             case 0:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/health-up.png"));
-                ability = new Ability(0, 3, 0);
+                ability = new Ability(0, 3, 1);
                 break;
             case 1:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/power-up-blue.png"));
@@ -37,7 +37,7 @@ public class Item extends GameObject implements PhysicsBody{
                 break;
             case 2:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/power-up-red.png"));
-                ability = new Ability(3, 1, 0);
+                ability = new Ability(3, 1, 1);
                 break;
         }
         //System.out.println("Item created");

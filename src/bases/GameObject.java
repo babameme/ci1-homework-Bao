@@ -49,8 +49,8 @@ public class GameObject {
             if ((!gameObjects.get(i).isActive()) && gameObjects.get(i).getClass() == gameObject.getClass()){
                 find = true;
                 gameObject.setActive(true);
-                gameObjects.setElementAt(gameObject, i);
                 Physics.replace(gameObjects.get(i), gameObject);
+                gameObjects.setElementAt(gameObject, i);
                 break;
             }
         }
@@ -76,7 +76,7 @@ public class GameObject {
 
     public void render(Graphics2D g2d) {
         if (renderer != null) {
-            renderer.render(g2d, position); // null.render() => NullPointerException
+            renderer.render(g2d, screenPosition); // null.render() => NullPointerException
         }
         for (GameObject child : children){
             if (child.isActive)

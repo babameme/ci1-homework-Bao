@@ -1,30 +1,30 @@
-package touhou.players;
+package touhou.support;
 
 import bases.FrameCounter;
 import bases.GameObject;
 import bases.Vector2D;
 import touhou.ability.Ability;
+import touhou.players.PlayerSpell;
 
 import java.util.Random;
 
-public class SpellSpawner{
-    private FrameCounter spawnCounter;
-    Random random;
+public class SpellSpawnerArm extends GameObject{
     int type;
     private Ability playerAbility;
-    private Vector2D position;
+    private FrameCounter spawnCounter;
 
-    public SpellSpawner(Ability ability) {
+    public SpellSpawnerArm(Ability ability) {
         super();
         type = 1;
         this.playerAbility = ability;
+        spawnCounter = new FrameCounter(50);
         //this.position = position;
     }
 
     public void cast(int x, int y, int dx, int dy){
         //System.out.println(Integer.toString(x)+ " -- " + Integer.toString(y));
         PlayerSpell playerSpell = new PlayerSpell();
-        playerSpell.getPosition().set(position.add(x,y));
+        playerSpell.getPosition().set(screenPosition.add(x,y));
         playerSpell.getDirection().set(dx,dy);
         GameObject.add(playerSpell);
     }
@@ -44,27 +44,31 @@ public class SpellSpawner{
         }
     }
 
-    public void shoot(Vector2D position){
-        if (playerAbility.getPower() < 5){
+    @Override
+    public void run(Vector2D parentPosition){
+        super.run(parentPosition);
+        if (playerAbility.getPower() <= 5){
             type = 1;
         }
-        else if (playerAbility.getPower() < 15){
+        else if (playerAbility.getPower() <= 15){
             type = 2;
         }
         else {
             type = 3;
         }
-        this.position = position;
-        switch (type){
-            case 1 :
-                castType1();
-                break;
-            case 2:
-                castType2();
-                break;
-            case 3:
-                castType3();
-                break;
+        if (spawnCounter.run()){
+            spawnCounter.reset();
+            switch (type){
+                case 1 :
+                    castType1();
+                    break;
+                case 2:
+                    castType2();
+                    break;
+                case 3:
+                    castType3();
+                    break;
+            }
         }
     }
 

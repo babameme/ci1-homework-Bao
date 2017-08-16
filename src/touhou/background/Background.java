@@ -28,7 +28,9 @@ public class Background extends GameObject{
 
     public void move(){
         position.addUp(0, SPEED);
-        constraints.make(position);
+        //constraints.make(position);
+        if (position.y > 0)
+            position.y -= 2341;
     }
 
     @Override

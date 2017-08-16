@@ -23,6 +23,11 @@ public class Ability {
         this.power = 0;
     }
 
+    public void copy(Ability other){
+        this.health = other.health;
+        this.damage = other.damage;
+        this.power = other.power;
+    }
     public void hurtHealth(int t){
         this.health -= t;
         if (this.health < 0)
