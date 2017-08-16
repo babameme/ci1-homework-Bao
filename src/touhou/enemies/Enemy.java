@@ -29,15 +29,15 @@ public class Enemy extends GameObject implements PhysicsBody{
         switch (type){
             case 0:
                 animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/pink/", 4),5);
-                ability = new Ability(3, 15);
+                ability = new Ability(4, 40);
                 break;
             case 1:
                 animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/blue/", 4),5);
-                ability = new Ability(4, 10);
-                break;
-            case 3:
-                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/black/", 9),5);
                 ability = new Ability(5, 30);
+                break;
+            case 2:
+                animation = new Animation(Sprite.getSprites("assets/images/enemies/level0/black/", 9),5);
+                ability = new Ability(7, 70);
                 boss = true;
                 break;
         }

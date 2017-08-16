@@ -17,16 +17,16 @@ public class SpellSpawnerArm extends GameObject{
         super();
         type = 1;
         this.playerAbility = ability;
-        spawnCounter = new FrameCounter(50);
+        spawnCounter = new FrameCounter(20);
         //this.position = position;
     }
 
     public void cast(int x, int y, int dx, int dy){
         //System.out.println(Integer.toString(x)+ " -- " + Integer.toString(y));
-        PlayerSpell playerSpell = new PlayerSpell();
-        playerSpell.getPosition().set(screenPosition.add(x,y));
-        playerSpell.getDirection().set(dx,dy);
-        GameObject.add(playerSpell);
+        EngineArmSpell engineArmSpell = new EngineArmSpell();
+        engineArmSpell.getPosition().set(screenPosition.add(x,y));
+        engineArmSpell.getDirection().set(dx,dy);
+        GameObject.add(engineArmSpell);
     }
 
     void castType1(){

@@ -48,8 +48,8 @@ public class Player extends GameObject implements PhysicsBody{
         stand = new Animation(Sprite.getSprites("assets/images/players/straight/", 7),5);
         animation = stand;
         renderer = new ImageRenderer(animation.getSprite());
-        ability = new Ability(DEFAULTDAMAGE, 20, DEFAULTPOWER);
-        this.coolDownCounter = new FrameCounter(3);
+        ability = new Ability(DEFAULTDAMAGE, 30, DEFAULTPOWER);
+        this.coolDownCounter = new FrameCounter(10);
         boxCollider = new BoxCollider(10,10);
         this.children.add(boxCollider);
         spellSpawner = new SpellSpawner(this.ability);
@@ -58,7 +58,7 @@ public class Player extends GameObject implements PhysicsBody{
         engineArm2 = new EngineArm(new Vector2D(40, 0));
         this.children.add(engineArm1);
         this.children.add(engineArm2);
-        System.out.println("##################################");
+        //System.out.println("##################################");
         spellSpawnerArm1 = new SpellSpawnerArm(this.ability);
         engineArm1.getChildren().add(spellSpawnerArm1);
         spellSpawnerArm2 = new SpellSpawnerArm(this.ability);
