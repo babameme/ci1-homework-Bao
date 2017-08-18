@@ -15,10 +15,12 @@ public class Animation implements Renderer {
     private List<BufferedImage> images;
     private FrameCounter frameCounter;
     private int currentImageIndex;
+    private boolean reverse;
 
     public Animation(int frameDelay, BufferedImage... images) {
         this.images = Arrays.asList(images);
         this.frameCounter = new FrameCounter(frameDelay);
+        this.reverse = false;
         this.currentImageIndex = 0;
     }
 
@@ -38,10 +40,22 @@ public class Animation implements Renderer {
 
         if (frameCounter.run()) {
             frameCounter.reset();
-            currentImageIndex++;
-            if (currentImageIndex >= images.size()) {
-                currentImageIndex = 0;
+            if (!reverse) {
+                currentImageIndex++;
+                if (currentImageIndex >= images.size()) {
+                    currentImageIndex = 0;
+                }
+            }
+            else{
+                currentImageIndex--;
+                if (currentImageIndex < 0){
+                    currentImageIndex = images.size() - 1;
+                }
             }
         }
+    }
+
+    public void setReverse(boolean reverse) {
+        this.reverse = reverse;
     }
 }

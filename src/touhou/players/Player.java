@@ -3,6 +3,7 @@ package touhou.players;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.pools.GameObjectPool;
+import spheres.PlayerSphere;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
@@ -28,6 +29,7 @@ public class Player extends GameObject {
         this.spellLock = false;
         this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
         this.coolDownCounter = new FrameCounter(1);
+        addSpheres();
     }
 
     public void setContraints(Constraints contraints) {
@@ -71,6 +73,16 @@ public class Player extends GameObject {
                 spellLock = false;
             }
         }
+    }
+
+    private void addSpheres(){
+        PlayerSphere leftSphere = new PlayerSphere();
+        leftSphere.getPosition().set(-20,0);
+        PlayerSphere rightSphere = new PlayerSphere();
+        rightSphere.getPosition().set(20,0);
+        rightSphere.setReverse(true);
+        children.add(leftSphere);
+        children.add(rightSphere);
     }
 
     public void setInputManager(InputManager inputManager) {
