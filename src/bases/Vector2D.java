@@ -72,6 +72,10 @@ public class Vector2D {
         return new Vector2D(this.x / mag, this.y / mag);
     }
 
+    public float distance(Vector2D other){
+        return (float) Math.sqrt((this.x - other.x) * (this.x - other.x) + (this.y - other.y) * (this.y - other.y));
+    }
+
     @Override
     public String toString() {
         return "Vector2D{" +

@@ -4,6 +4,7 @@ import bases.physics.Physics;
 import bases.physics.PhysicsBody;
 import bases.renderers.ImageRenderer;
 import bases.renderers.Renderer;
+import touhou.players.Player;
 import touhou.players.PlayerSpell;
 
 import java.awt.*;
@@ -24,6 +25,7 @@ public class GameObject {
 
     private static Vector<GameObject> gameObjects = new Vector<>();
     private static Vector<GameObject> newGameObjects = new Vector<>();
+    public static Player player = new Player();
 
     public static void runAll() {
 
@@ -79,6 +81,23 @@ public class GameObject {
         }
     }
 
+    public static <T extends GameObject> T minDistanceWith(Vector2D position, Class<T> classz){
+        float minDis = 1000000000, t;
+        T result = null;
+        for (GameObject gameObject : gameObjects){
+            if (gameObject.isActive()){
+                if (gameObject.getClass().equals(classz)) {
+                    t = gameObject.getScreenPosition().distance(position);
+                    if (t < minDis) {
+                        minDis = t;
+                        result = (T) gameObject;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
     public boolean isActive() {
         return isActive;
     }
@@ -100,12 +119,12 @@ public class GameObject {
         return renderer;
     }
 
+    public Vector2D getScreenPosition() {
+        return screenPosition;
+    }
+
     public void setRenderer(Renderer renderer) {
         if (renderer != null)
             this.renderer = renderer;
-    }
-
-    public Vector2D getScreenPosition() {
-        return screenPosition;
     }
 }

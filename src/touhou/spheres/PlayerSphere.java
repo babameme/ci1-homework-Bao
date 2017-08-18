@@ -16,10 +16,15 @@ public class PlayerSphere extends GameObject {
                 SpriteUtils.loadImage("assets/images/sphere/3.png")
         );
         this.renderer = animation;
+        addSpellSpawner();
     }
 
     public void setReverse(boolean reverse){
         this.animation.setReverse(reverse);
     }
 
+    private void addSpellSpawner() {
+        SpellSpawner spellSpawner = new SpellSpawner();
+        children.add(spellSpawner);
+    }
 }
