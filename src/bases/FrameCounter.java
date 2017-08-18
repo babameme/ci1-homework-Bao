@@ -19,6 +19,14 @@ public class FrameCounter {
         return false;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public int getCountMax() {
+        return countMax;
+    }
+
     public void reset() {
         this.count = 0;
     }

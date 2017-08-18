@@ -7,11 +7,13 @@ import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
+import touhou.ability.Ability;
 
 public class EnemyBullet extends GameObject implements PhysicsBody{
     private BoxCollider boxCollider;
     private Constraints constraints;
     private Vector2D direction;
+    private Ability ability;
 
     public EnemyBullet() {
         super();
@@ -28,6 +30,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         children.add(boxCollider);
         direction = new Vector2D(0, 7);
         constraints = new Constraints(0,768,0, 384);
+        ability = new Ability(2, 3, 0);
         //System.out.println("Bullet added");
     }
 

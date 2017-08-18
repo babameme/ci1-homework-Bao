@@ -3,9 +3,11 @@ package touhou.spheres;
 import bases.GameObject;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
+import touhou.ability.Ability;
 
 public class PlayerSphere extends GameObject {
     Animation animation;
+    private Ability ability;
 
     public PlayerSphere(){
         super();
@@ -16,6 +18,7 @@ public class PlayerSphere extends GameObject {
                 SpriteUtils.loadImage("assets/images/sphere/3.png")
         );
         this.renderer = animation;
+        ability = new Ability(2, 1, 0);
         addSpellSpawner();
     }
 

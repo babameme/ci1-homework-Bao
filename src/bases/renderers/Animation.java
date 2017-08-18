@@ -16,12 +16,14 @@ public class Animation implements Renderer {
     private FrameCounter frameCounter;
     private int currentImageIndex;
     private boolean reverse;
+    private boolean ended;
 
     public Animation(int frameDelay, BufferedImage... images) {
         this.images = Arrays.asList(images);
         this.frameCounter = new FrameCounter(frameDelay);
         this.reverse = false;
         this.currentImageIndex = 0;
+        this.ended = false;
     }
 
     public Animation(BufferedImage... images) {
@@ -38,6 +40,14 @@ public class Animation implements Renderer {
 
         g2d.drawImage(image, (int)renderPosition.x, (int)renderPosition.y, null);
 
+//        if (((reverse && currentImageIndex == images.size() - 1) || ((!reverse) && (currentImageIndex == 0))) &&
+//                (frameCounter.getCount() == 0)){
+//            ended = true;
+//        }
+        if (((reverse && currentImageIndex == 1) || ((!reverse) && currentImageIndex == images.size() - 1)) &&
+        (frameCounter.getCount() == frameCounter.getCountMax())) {
+            ended = true;
+        }
         if (frameCounter.run()) {
             frameCounter.reset();
             if (!reverse) {
@@ -57,5 +67,13 @@ public class Animation implements Renderer {
 
     public void setReverse(boolean reverse) {
         this.reverse = reverse;
+    }
+
+    public boolean isEnded() {
+        return ended;
+    }
+
+    public void setEnded(boolean ended) {
+        this.ended = ended;
     }
 }

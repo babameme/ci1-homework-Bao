@@ -5,6 +5,7 @@ import bases.Vector2D;
 import bases.pools.GameObjectPool;
 import bases.renderers.Animation;
 import bases.renderers.Renderer;
+import touhou.ability.Ability;
 import touhou.spheres.PlayerSphere;
 import tklibs.SpriteUtils;
 import bases.Constraints;
@@ -23,6 +24,8 @@ public class Player extends GameObject {
 
     private FrameCounter coolDownCounter;
     private boolean spellLock;
+
+    private Ability ability;
     public Renderer left, right, straight, blink;
     boolean moveLeftRight;
 
@@ -60,6 +63,7 @@ public class Player extends GameObject {
         );
         renderer = straight;
         this.coolDownCounter = new FrameCounter(5);
+        ability = new Ability(40, 5, 0);
         addSpheres();
     }
 

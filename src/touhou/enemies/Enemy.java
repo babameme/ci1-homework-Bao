@@ -7,6 +7,7 @@ import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
+import touhou.ability.Ability;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ public class Enemy extends GameObject implements PhysicsBody {
     private static final float SPEED = 3;
     private BoxCollider boxCollider;
     private BulletSpawner bulletSpawner;
+    private Ability ability;
 
     public Enemy() {
         super();
@@ -32,6 +34,7 @@ public class Enemy extends GameObject implements PhysicsBody {
 
         this.boxCollider = new BoxCollider(20, 20);
         this.children.add(boxCollider);
+        ability = new Ability(20, 3, 0);
         addBulletSpawner();
     }
 
@@ -56,5 +59,9 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     public BoxCollider getBoxCollider() {
         return this.boxCollider;
+    }
+
+    public Ability getAbility() {
+        return ability;
     }
 }
