@@ -1,9 +1,8 @@
-package spheres;
+package touhou.spheres;
 
 import bases.GameObject;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
-import touhou.players.Player;
 
 public class PlayerSphere extends GameObject {
     Animation animation;

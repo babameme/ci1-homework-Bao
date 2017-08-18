@@ -3,14 +3,14 @@ package touhou.players;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.pools.GameObjectPool;
-import spheres.PlayerSphere;
+import bases.renderers.Animation;
+import bases.renderers.Renderer;
+import touhou.spheres.PlayerSphere;
 import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
 import bases.renderers.ImageRenderer;
 import touhou.inputs.InputManager;
-
-import java.util.Vector;
 
 /**
  * Created by huynq on 8/2/17.
@@ -23,12 +23,43 @@ public class Player extends GameObject {
 
     private FrameCounter coolDownCounter;
     private boolean spellLock;
+    public Renderer left, right, straight, blink;
+    boolean moveLeftRight;
 
     public Player() {
         super();
         this.spellLock = false;
-        this.renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/players/straight/0.png"));
-        this.coolDownCounter = new FrameCounter(1);
+        straight = new Animation(
+                SpriteUtils.loadImage("assets/images/players/straight/0.png"),
+                SpriteUtils.loadImage("assets/images/players/straight/1.png"),
+                SpriteUtils.loadImage("assets/images/players/straight/2.png"),
+                SpriteUtils.loadImage("assets/images/players/straight/3.png"),
+                SpriteUtils.loadImage("assets/images/players/straight/4.png"),
+                SpriteUtils.loadImage("assets/images/players/straight/5.png"),
+                SpriteUtils.loadImage("assets/images/players/straight/6.png")
+        );
+        left = new Animation(
+                SpriteUtils.loadImage("assets/images/players/left/0.png"),
+                SpriteUtils.loadImage("assets/images/players/left/1.png"),
+                SpriteUtils.loadImage("assets/images/players/left/2.png"),
+                SpriteUtils.loadImage("assets/images/players/left/3.png"),
+                SpriteUtils.loadImage("assets/images/players/left/4.png"),
+                SpriteUtils.loadImage("assets/images/players/left/5.png")
+        );
+        right = new Animation(
+                SpriteUtils.loadImage("assets/images/players/right/0.png"),
+                SpriteUtils.loadImage("assets/images/players/right/1.png"),
+                SpriteUtils.loadImage("assets/images/players/right/2.png"),
+                SpriteUtils.loadImage("assets/images/players/right/3.png"),
+                SpriteUtils.loadImage("assets/images/players/right/4.png"),
+                SpriteUtils.loadImage("assets/images/players/right/5.png")
+        );
+        blink = new Animation(
+                SpriteUtils.loadImage("assets/images/players/blink/0.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/1.png")
+        );
+        renderer = straight;
+        this.coolDownCounter = new FrameCounter(5);
         addSpheres();
     }
 
@@ -38,20 +69,27 @@ public class Player extends GameObject {
 
     public void run(Vector2D parentPostion) {
         super.run(parentPostion);
-
+        moveLeftRight = false;
         if (inputManager.upPressed)
             position.addUp(0, -SPEED);
         if (inputManager.downPressed)
             position.addUp(0, SPEED);
-        if (inputManager.leftPressed)
+        if (inputManager.leftPressed) {
             position.addUp(-SPEED, 0);
-        if (inputManager.rightPressed)
+            moveLeftRight = true;
+            renderer = left;
+        }
+        if (inputManager.rightPressed) {
             position.addUp(SPEED, 0);
-
+            moveLeftRight = true;
+            renderer = right;
+        }
+        if (!moveLeftRight){
+            renderer = straight;
+        }
         if (constraints != null) {
             constraints.make(position);
         }
-
         castSpell();
     }
 

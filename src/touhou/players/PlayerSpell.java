@@ -33,7 +33,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody {
         hitEnemy();
         deactiveIfNeeded();
     }
-
+    //TODO : Fix
     private void deactiveIfNeeded() {
         if (this.screenPosition.y < 0) {
             this.isActive = false;

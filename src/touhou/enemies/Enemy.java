@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class Enemy extends GameObject implements PhysicsBody {
     private static final float SPEED = 3;
     private BoxCollider boxCollider;
+    private BulletSpawner bulletSpawner;
 
     public Enemy() {
         super();
@@ -31,6 +32,12 @@ public class Enemy extends GameObject implements PhysicsBody {
 
         this.boxCollider = new BoxCollider(20, 20);
         this.children.add(boxCollider);
+        addBulletSpawner();
+    }
+
+    private void addBulletSpawner() {
+        bulletSpawner = new BulletSpawner();
+        children.add(bulletSpawner);
     }
 
     public void run(Vector2D parentPosition) {

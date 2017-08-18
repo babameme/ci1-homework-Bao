@@ -104,4 +104,8 @@ public class GameObject {
         if (renderer != null)
             this.renderer = renderer;
     }
+
+    public Vector2D getScreenPosition() {
+        return screenPosition;
+    }
 }
