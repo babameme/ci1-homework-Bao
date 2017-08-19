@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef7fe01c-2fb1-4c3b-b4e2-548131a31b3a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/touhou/ability/Ability.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/touhou/explosions/Explosion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/bases/FrameCounter.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/bases/FrameCounter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/bases/renderers/Animation.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/bases/renderers/Animation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/Enemy.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/Enemy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemyBullet.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemyBullet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/Player.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/PlayerSpell.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/PlayerSpell.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/spheres/PlayerSphere.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/spheres/PlayerSphere.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/FrameCounter.java" afterPath="$PROJECT_DIR$/src/bases/FrameCounter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bases/renderers/Animation.java" afterPath="$PROJECT_DIR$/src/bases/renderers/Animation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/players/Player.java" afterPath="$PROJECT_DIR$/src/touhou/players/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/players/PlayerSpell.java" afterPath="$PROJECT_DIR$/src/touhou/players/PlayerSpell.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/spheres/PlayerSphere.java" afterPath="$PROJECT_DIR$/src/touhou/spheres/PlayerSphere.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java" afterPath="$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +25,7 @@
       <file leaf-file-name="EnemyBullet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
+            <state relative-caret-position="24">
               <caret line="32" column="39" lean-forward="false" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -51,7 +37,7 @@
       <file leaf-file-name="Animation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bases/renderers/Animation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="925">
+            <state relative-caret-position="1088">
               <caret line="75" column="41" lean-forward="false" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
               <folding>
                 <element signature="e#2135#2136#0" expanded="true" />
@@ -65,7 +51,7 @@
       <file leaf-file-name="Explosion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/explosions/Explosion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
+            <state relative-caret-position="136">
               <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -79,19 +65,44 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
+            <state relative-caret-position="833">
+              <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerSpell.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerSpell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/players/PlayerSpell.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+              <caret line="58" column="9" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="58" selection-end-column="9" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SphereSpell.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+              <folding>
+                <element signature="e#1698#1699#0" expanded="true" />
+                <element signature="e#1728#1729#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,16 +161,16 @@
         <option value="$PROJECT_DIR$/src/bases/Vector2D.java" />
         <option value="$PROJECT_DIR$/src/touhou/spheres/SpellSpawner.java" />
         <option value="$PROJECT_DIR$/src/bases/GameObject.java" />
-        <option value="$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java" />
         <option value="$PROJECT_DIR$/src/touhou/players/Player.java" />
-        <option value="$PROJECT_DIR$/src/touhou/spheres/PlayerSphere.java" />
         <option value="$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java" />
-        <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
         <option value="$PROJECT_DIR$/src/bases/FrameCounter.java" />
         <option value="$PROJECT_DIR$/src/touhou/ability/Ability.java" />
         <option value="$PROJECT_DIR$/src/bases/renderers/Animation.java" />
         <option value="$PROJECT_DIR$/src/touhou/explosions/Explosion.java" />
         <option value="$PROJECT_DIR$/src/touhou/players/PlayerSpell.java" />
+        <option value="$PROJECT_DIR$/src/touhou/spheres/PlayerSphere.java" />
+        <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
+        <option value="$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java" />
       </list>
     </option>
   </component>
@@ -184,122 +195,36 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1-Babameme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-Babameme" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="background" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="enemies" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="enemies" type="462c0819:PsiDirectoryNode" />
-              <item name="explosion" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1-Babameme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-Babameme" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bases" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bases" type="462c0819:PsiDirectoryNode" />
-              <item name="physics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bases" type="462c0819:PsiDirectoryNode" />
-              <item name="pools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bases" type="462c0819:PsiDirectoryNode" />
-              <item name="renderers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1-Babameme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-Babameme" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="touhou" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="touhou" type="462c0819:PsiDirectoryNode" />
-              <item name="ability" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="touhou" type="462c0819:PsiDirectoryNode" />
-              <item name="background" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1-Babameme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-Babameme" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="touhou" type="462c0819:PsiDirectoryNode" />
               <item name="enemies" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="touhou" type="462c0819:PsiDirectoryNode" />
-              <item name="explosions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="touhou" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ci1-huynq" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ci1-huynq" type="462c0819:PsiDirectoryNode" />
+              <item name="ci1-Babameme" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ci1-Babameme" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="touhou" type="462c0819:PsiDirectoryNode" />
               <item name="spheres" type="462c0819:PsiDirectoryNode" />
@@ -308,9 +233,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,7 +241,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ci1-BAO" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -665,11 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -732,7 +650,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="60" column="34" lean-forward="false" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -769,26 +686,6 @@
         <state relative-caret-position="197">
           <caret line="89" column="20" lean-forward="false" selection-start-line="89" selection-start-column="20" selection-end-line="89" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="63" column="33" lean-forward="false" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
-          <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -832,45 +729,16 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/spheres/PlayerSphere.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/ability/Ability.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bases/FrameCounter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="39" lean-forward="false" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bases/renderers/Animation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="925">
+        <state relative-caret-position="1088">
           <caret line="75" column="41" lean-forward="false" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
           <folding>
             <element signature="e#2135#2136#0" expanded="true" />
@@ -882,7 +750,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/explosions/Explosion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="136">
           <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -894,17 +762,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
+        <state relative-caret-position="833">
+          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="32" column="39" lean-forward="false" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/spheres/PlayerSphere.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/players/PlayerSpell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <caret line="58" column="9" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="58" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/ability/Ability.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+          <folding>
+            <element signature="e#1698#1699#0" expanded="true" />
+            <element signature="e#1728#1729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="32" column="34" lean-forward="false" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

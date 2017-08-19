@@ -4,16 +4,21 @@ import bases.Constraints;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.BoxCollider;
+import bases.physics.Physics;
 import bases.physics.PhysicsBody;
+import bases.pools.GameObjectPool;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
+import touhou.ability.Ability;
 import touhou.enemies.Enemy;
+import touhou.explosions.Explosion;
 
 public class SphereSpell extends GameObject implements PhysicsBody{
     private static final float SPEED = 7;
     private BoxCollider boxCollider;
     private Constraints constraints;
     private Vector2D direction;
+    private Ability ability;
 
     public SphereSpell(){
         super();
@@ -25,6 +30,7 @@ public class SphereSpell extends GameObject implements PhysicsBody{
         );
         constraints = new Constraints(0,768,0, 384);
         boxCollider = new BoxCollider(20, 20);
+        ability = new Ability(2, 2, 0);
         children.add(boxCollider);
         direction = new Vector2D(0, -SPEED);
     }
@@ -38,6 +44,21 @@ public class SphereSpell extends GameObject implements PhysicsBody{
         }
         fly();
         shoot();
+        hitEnemy();
+    }
+
+    private void hitEnemy() {
+        Enemy enemy = Physics.collideWith(this.boxCollider, Enemy.class);
+        if (enemy != null) {
+            enemy.getAbility().hurt(this.ability.damage);
+            Explosion explosion = GameObjectPool.recycle(Explosion.class);
+            explosion.getPosition().set(enemy.getScreenPosition());
+            explosion.getAnimation().setEnded(false);
+            if (enemy.getAbility().health == 0){
+                enemy.setActive(false);
+            }
+            this.isActive = false;
+        }
     }
 
     private void shoot() {

@@ -1,6 +1,7 @@
 package touhou.spheres;
 
 import bases.GameObject;
+import bases.Vector2D;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import touhou.ability.Ability;
@@ -30,4 +31,5 @@ public class PlayerSphere extends GameObject {
         SpellSpawner spellSpawner = new SpellSpawner();
         children.add(spellSpawner);
     }
+    
 }

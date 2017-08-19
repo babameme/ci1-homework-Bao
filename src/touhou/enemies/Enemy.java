@@ -34,7 +34,7 @@ public class Enemy extends GameObject implements PhysicsBody {
 
         this.boxCollider = new BoxCollider(20, 20);
         this.children.add(boxCollider);
-        ability = new Ability(20, 3, 0);
+        ability = new Ability(30, 3, 0);
         addBulletSpawner();
     }
 
