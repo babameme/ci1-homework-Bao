@@ -30,7 +30,7 @@ public class GameWindow extends Frame {
     private Graphics2D backbufferGraphics;
 
     private Background background;
-    //Player player = new Player();
+    Player player = new Player();
 
     InputManager inputManager = new InputManager();
 
@@ -54,11 +54,11 @@ public class GameWindow extends Frame {
     }
 
     private void addPlayer() {
-        GameObject.player.setInputManager(this.inputManager);
-        GameObject.player.setContraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
-        GameObject.player.getPosition().set(384 / 2, 580);
+        player.setInputManager(this.inputManager);
+        player.setContraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
+        player.getPosition().set(384 / 2, 580);
 
-        GameObject.add(GameObject.player);
+        GameObject.add(player);
     }
 
     private void setupGameLoop() {

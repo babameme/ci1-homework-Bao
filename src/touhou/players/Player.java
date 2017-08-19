@@ -2,10 +2,15 @@ package touhou.players;
 
 import bases.GameObject;
 import bases.Vector2D;
+import bases.physics.BoxCollider;
+import bases.physics.Physics;
+import bases.physics.PhysicsBody;
 import bases.pools.GameObjectPool;
 import bases.renderers.Animation;
 import bases.renderers.Renderer;
 import touhou.ability.Ability;
+import touhou.enemies.Enemy;
+import touhou.enemies.EnemyBullet;
 import touhou.spheres.PlayerSphere;
 import tklibs.SpriteUtils;
 import bases.Constraints;
@@ -16,7 +21,7 @@ import touhou.inputs.InputManager;
 /**
  * Created by huynq on 8/2/17.
  */
-public class Player extends GameObject {
+public class Player extends GameObject implements PhysicsBody{
     private static final int SPEED = 5;
 
     private InputManager inputManager;
@@ -24,10 +29,11 @@ public class Player extends GameObject {
 
     private FrameCounter coolDownCounter;
     private boolean spellLock;
+    private BoxCollider boxCollider;
 
     private Ability ability;
-    public Renderer left, right, straight, blink;
-    boolean moveLeftRight;
+    public Animation left, right, straight, blink;
+    boolean moveLeftRight, isBlink;
 
     public Player() {
         super();
@@ -57,13 +63,24 @@ public class Player extends GameObject {
                 SpriteUtils.loadImage("assets/images/players/right/4.png"),
                 SpriteUtils.loadImage("assets/images/players/right/5.png")
         );
-        blink = new Animation(
+        blink = new Animation(12,
                 SpriteUtils.loadImage("assets/images/players/blink/0.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/1.png")
+                SpriteUtils.loadImage("assets/images/players/blink/1.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/2.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/3.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/4.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/5.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/6.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/7.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/8.png"),
+                SpriteUtils.loadImage("assets/images/players/blink/9.png")
         );
         renderer = straight;
         this.coolDownCounter = new FrameCounter(5);
+        this.boxCollider = new BoxCollider(15, 15);
+        children.add(boxCollider);
         ability = new Ability(40, 5, 0);
+        isBlink = false;
         addSpheres();
     }
 
@@ -80,21 +97,60 @@ public class Player extends GameObject {
             position.addUp(0, SPEED);
         if (inputManager.leftPressed) {
             position.addUp(-SPEED, 0);
-            moveLeftRight = true;
-            renderer = left;
+            if (!isBlink) {
+                moveLeftRight = true;
+                renderer = left;
+            }
         }
         if (inputManager.rightPressed) {
             position.addUp(SPEED, 0);
-            moveLeftRight = true;
-            renderer = right;
-        }
-        if (!moveLeftRight){
-            renderer = straight;
+            if (!isBlink) {
+                moveLeftRight = true;
+                renderer = right;
+            }
         }
         if (constraints != null) {
             constraints.make(position);
         }
         castSpell();
+        giveBullet();
+        hitEnemy();
+        if (renderer == blink){
+            if (blink.isEnded()){
+                renderer = straight;
+                isBlink = false;
+            }
+            // Else do nothing
+        }
+        else{
+            if (!moveLeftRight){
+                renderer = straight;
+            }
+        }
+        System.out.println(ability.health);
+    }
+
+    private void giveBullet() {
+        EnemyBullet enemyBullet = Physics.collideWith(this.boxCollider, EnemyBullet.class);
+        if (enemyBullet != null){
+            enemyBullet.setActive(false);
+            if (!isBlink) {
+                this.getAbility().hurt(enemyBullet.getAbility().damage);
+            }
+        }
+    }
+
+    private void hitEnemy(){
+        Enemy enemy = Physics.collideWith(this.boxCollider, Enemy.class);
+        if (enemy != null){
+            if (!isBlink) {
+                enemy.getAbility().hurt(this.ability.damage);
+                this.getAbility().hurt(enemy.getAbility().damage);
+            }
+            blink.setEnded(false);
+            renderer = blink;
+            isBlink = true;
+        }
     }
 
     private void castSpell() {
@@ -129,5 +185,14 @@ public class Player extends GameObject {
 
     public void setInputManager(InputManager inputManager) {
         this.inputManager = inputManager;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
+
+    @Override
+    public BoxCollider getBoxCollider() {
+        return this.boxCollider;
     }
 }

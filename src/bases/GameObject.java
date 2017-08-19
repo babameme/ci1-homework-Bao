@@ -25,7 +25,6 @@ public class GameObject {
 
     private static Vector<GameObject> gameObjects = new Vector<>();
     private static Vector<GameObject> newGameObjects = new Vector<>();
-    public static Player player = new Player();
 
     public static void runAll() {
 

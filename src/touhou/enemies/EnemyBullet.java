@@ -45,12 +45,16 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         //TODO : Hit Player
     }
 
+    public Ability getAbility() {
+        return ability;
+    }
+
     private void fly() {
         position.addUp(direction);
     }
 
     @Override
     public BoxCollider getBoxCollider() {
-        return null;
+        return boxCollider;
     }
 }
