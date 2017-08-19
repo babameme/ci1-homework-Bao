@@ -26,7 +26,7 @@ public class ItemSpawner extends GameObject{
             //Item item = new Item();
             Item item = GameObjectPool.recycle(Item.class);
             item.getPosition().set(random.nextInt(384), 20);
-            GameObject.add(item);
+            //GameObject.add(item);
         }
     }
 }

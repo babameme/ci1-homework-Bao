@@ -107,6 +107,8 @@ public class GameWindow extends Frame {
         backbufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         font = new Font("Serif", Font.PLAIN, 21);
+        backbufferGraphics.setFont(font);
+        backbufferGraphics.setColor(Color.white);
     }
 
     public void loop() {
@@ -138,8 +140,6 @@ public class GameWindow extends Frame {
 
         GameObject.renderAll(backbufferGraphics);
 
-        backbufferGraphics.setFont(font);
-        backbufferGraphics.setColor(Color.white);
         backbufferGraphics.drawString("Your health : " + Integer.toString(player.getAbility().health), 400, 50);
         backbufferGraphics.drawString("Your damage : " + Integer.toString(player.getAbility().damage), 400, 90);
         backbufferGraphics.drawString("Your power : " + Integer.toString(player.getAbility().power), 400, 130);
