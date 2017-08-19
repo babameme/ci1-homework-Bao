@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef7fe01c-2fb1-4c3b-b4e2-548131a31b3a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/touhou/items/Item.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/touhou/items/ItemSpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemySpawner.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemySpawner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/Player.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/spheres/SphereSpell.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/spheres/SphereSpell.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/GameWindow.java" afterPath="$PROJECT_DIR$/src/touhou/GameWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/ability/Ability.java" afterPath="$PROJECT_DIR$/src/touhou/ability/Ability.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/players/Player.java" afterPath="$PROJECT_DIR$/src/touhou/players/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java" afterPath="$PROJECT_DIR$/src/touhou/spheres/SphereSpell.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,10 +47,12 @@
       <file leaf-file-name="GameWindow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+            <state relative-caret-position="313">
+              <caret line="146" column="45" lean-forward="false" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
               <folding>
-                <marker date="1503121486927" expanded="true" signature="1070:1078" ph="{...}" />
+                <element signature="e#3430#3431#0" expanded="true" />
+                <element signature="e#3486#3487#0" expanded="true" />
+                <marker date="1503122536158" expanded="true" signature="1085:1093" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -962,10 +954,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/GameWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        <state relative-caret-position="313">
+          <caret line="146" column="45" lean-forward="false" selection-start-line="146" selection-start-column="45" selection-end-line="146" selection-end-column="45" />
           <folding>
-            <marker date="1503121486927" expanded="true" signature="1070:1078" ph="{...}" />
+            <element signature="e#3430#3431#0" expanded="true" />
+            <element signature="e#3486#3487#0" expanded="true" />
+            <marker date="1503122536158" expanded="true" signature="1085:1093" ph="{...}" />
           </folding>
         </state>
       </provider>

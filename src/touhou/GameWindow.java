@@ -31,6 +31,7 @@ public class GameWindow extends Frame {
     private Graphics2D backbufferGraphics;
 
     private Background background;
+    Font font;
     Player player = new Player();
 
     InputManager inputManager = new InputManager();
@@ -103,6 +104,9 @@ public class GameWindow extends Frame {
                 inputManager.keyReleased(e);
             }
         });
+        backbufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        font = new Font("Serif", Font.PLAIN, 21);
     }
 
     public void loop() {
@@ -127,7 +131,6 @@ public class GameWindow extends Frame {
     public void update(Graphics g) {
         g.drawImage(backbufferImage, 0, 0, null);
     }
-
     private void render() {
 
         backbufferGraphics.setColor(Color.black);
@@ -135,7 +138,15 @@ public class GameWindow extends Frame {
 
         GameObject.renderAll(backbufferGraphics);
 
+        backbufferGraphics.setFont(font);
+        backbufferGraphics.setColor(Color.white);
+        backbufferGraphics.drawString("Your health : " + Integer.toString(player.getAbility().health), 400, 50);
+        backbufferGraphics.drawString("Your damage : " + Integer.toString(player.getAbility().damage), 400, 90);
+        backbufferGraphics.drawString("Your power : " + Integer.toString(player.getAbility().power), 400, 130);
 
+        if (player.getAbility().health <= 0){
+            backbufferGraphics.drawString("GAMEOVER", 50, 130);
+        }
         repaint(); // ask to repaint
     }
 }
