@@ -24,7 +24,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody {
         super();
 
         this.renderer = new ImageRenderer(SpriteUtils.loadImage(
-                "assets/images/player-spells/a/0.png"
+                "assets/images/player-spells/a/1.png"
         ));
         ability = new Ability(2, 3, 0);
         this.boxCollider = new BoxCollider(20, 20);
