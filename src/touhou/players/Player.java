@@ -11,6 +11,7 @@ import bases.renderers.Renderer;
 import touhou.ability.Ability;
 import touhou.enemies.Enemy;
 import touhou.enemies.EnemyBullet;
+import touhou.items.Item;
 import touhou.spheres.PlayerSphere;
 import tklibs.SpriteUtils;
 import bases.Constraints;
@@ -63,7 +64,7 @@ public class Player extends GameObject implements PhysicsBody{
                 SpriteUtils.loadImage("assets/images/players/right/4.png"),
                 SpriteUtils.loadImage("assets/images/players/right/5.png")
         );
-        blink = new Animation(12,
+        blink = new Animation(17,
                 SpriteUtils.loadImage("assets/images/players/blink/0.png"),
                 SpriteUtils.loadImage("assets/images/players/blink/1.png"),
                 SpriteUtils.loadImage("assets/images/players/blink/2.png"),
@@ -115,6 +116,7 @@ public class Player extends GameObject implements PhysicsBody{
         castSpell();
         giveBullet();
         hitEnemy();
+        getItem();
         if (renderer == blink){
             if (blink.isEnded()){
                 renderer = straight;
@@ -130,11 +132,19 @@ public class Player extends GameObject implements PhysicsBody{
         System.out.println(ability.health);
     }
 
+    private void getItem() {
+        Item item = Physics.collideWith(this.boxCollider, Item.class);
+        if (item != null){
+            this.getAbility().add(item.getAbility());
+            item.setActive(false);
+        }
+    }
+
     private void giveBullet() {
         EnemyBullet enemyBullet = Physics.collideWith(this.boxCollider, EnemyBullet.class);
         if (enemyBullet != null){
-            enemyBullet.setActive(false);
             if (!isBlink) {
+                enemyBullet.setActive(false);
                 this.getAbility().hurt(enemyBullet.getAbility().damage);
             }
         }

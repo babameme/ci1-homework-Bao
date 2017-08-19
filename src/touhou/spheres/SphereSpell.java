@@ -14,7 +14,7 @@ import touhou.enemies.Enemy;
 import touhou.explosions.Explosion;
 
 public class SphereSpell extends GameObject implements PhysicsBody{
-    private static final float SPEED = 7;
+    private static final float SPEED = 10;
     private BoxCollider boxCollider;
     private Constraints constraints;
     private Vector2D direction;
@@ -30,7 +30,7 @@ public class SphereSpell extends GameObject implements PhysicsBody{
         );
         constraints = new Constraints(0,768,0, 384);
         boxCollider = new BoxCollider(20, 20);
-        ability = new Ability(2, 2, 0);
+        ability = new Ability(2, 1, 0);
         children.add(boxCollider);
         direction = new Vector2D(0, -SPEED);
     }

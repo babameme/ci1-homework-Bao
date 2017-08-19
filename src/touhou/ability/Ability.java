@@ -21,6 +21,11 @@ public class Ability {
             this.health = 0;
         }
     }
+    public void add(Ability other){
+        this.health += other.health;
+        //this.damage += other.damage;
+        this.power += other.damage;
+    }
     public void setHealth(int health) {
         this.health = health;
     }

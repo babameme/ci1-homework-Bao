@@ -6,6 +6,7 @@ import bases.Constraints;
 import touhou.background.Background;
 import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
+import touhou.items.ItemSpawner;
 import touhou.players.Player;
 
 import java.awt.*;
@@ -39,8 +40,14 @@ public class GameWindow extends Frame {
         addBackground();
         addPlayer();
         addEnemySpawner();
+        addItemSpawner();
         setupGameLoop();
         setupWindow();
+    }
+
+    private void addItemSpawner() {
+        ItemSpawner itemSpawner = new ItemSpawner();
+        GameObject.add(itemSpawner);
     }
 
     private void addEnemySpawner() {
