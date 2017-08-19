@@ -28,7 +28,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         );
         boxCollider = new BoxCollider(14, 14);
         children.add(boxCollider);
-        direction = new Vector2D(0, 7);
+        direction = new Vector2D(0, 4);
         constraints = new Constraints(0,768,0, 384);
         ability = new Ability(2, 3, 0);
         //System.out.println("Bullet added");

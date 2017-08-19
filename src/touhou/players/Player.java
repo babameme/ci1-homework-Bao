@@ -77,7 +77,7 @@ public class Player extends GameObject implements PhysicsBody{
         );
         renderer = straight;
         this.coolDownCounter = new FrameCounter(5);
-        this.boxCollider = new BoxCollider(15, 15);
+        this.boxCollider = new BoxCollider(8, 8);
         children.add(boxCollider);
         ability = new Ability(40, 5, 0);
         isBlink = false;

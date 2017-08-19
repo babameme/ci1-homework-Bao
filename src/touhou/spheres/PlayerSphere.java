@@ -19,7 +19,7 @@ public class PlayerSphere extends GameObject {
                 SpriteUtils.loadImage("assets/images/sphere/3.png")
         );
         this.renderer = animation;
-        ability = new Ability(2, 1, 0);
+        ability = new Ability(2, 2, 0);
         addSpellSpawner();
     }
 

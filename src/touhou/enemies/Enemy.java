@@ -12,20 +12,23 @@ import touhou.ability.Ability;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by huynq on 8/9/17.
  */
 public class Enemy extends GameObject implements PhysicsBody {
-    private static final float SPEED = 3;
+    private static final float SPEED = 2;
     private BoxCollider boxCollider;
     private BulletSpawner bulletSpawner;
     private Ability ability;
     private int type;
+    private Random random;
 
-    public Enemy(int type) {
+    public Enemy() {
         super();
-        this.type = type;
+        random = new Random();
+        type = random.nextInt(3);
         switch (type) {
             case 0:
                 renderer = new Animation(

@@ -13,7 +13,7 @@ public class BulletSpawner extends GameObject{
 
     public BulletSpawner(){
         super();
-        spawnCounter = new FrameCounter(30);
+        spawnCounter = new FrameCounter(120);
         random = new Random();
     }
 
@@ -33,7 +33,9 @@ public class BulletSpawner extends GameObject{
     }
 
     private void cast() {
-        EnemyBullet enemyBullet = GameObjectPool.recycle(EnemyBullet.class);
-        enemyBullet.getPosition().set(this.screenPosition.add(0, 30));
+        for (int i = -3; i <= 3; i++) {
+            EnemyBullet enemyBullet = GameObjectPool.recycle(EnemyBullet.class);
+            enemyBullet.getPosition().set(this.screenPosition.add(i * 50, 30));
+        }
     }
 }

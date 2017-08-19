@@ -23,5 +23,8 @@ public class Background extends GameObject{
 
     private void move() {
         this.getPosition().addUp(0, SPEED);
+        if (position.y > 0){
+            position.y = 0;
+        }
     }
 }
