@@ -3,6 +3,7 @@ package touhou.enemies;
 import bases.GameObject;
 import bases.physics.BoxCollider;
 import bases.physics.PhysicsBody;
+import bases.pools.GameObjectPool;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import bases.Vector2D;
@@ -92,5 +93,15 @@ public class Enemy extends GameObject implements PhysicsBody {
 
     public Ability getAbility() {
         return ability;
+    }
+
+    public void getHit(int damage) {
+        this.ability.hurt(damage);
+        EnemyExplosion explosion = GameObjectPool.recycle(EnemyExplosion.class);
+        explosion.getPosition().set(this.position);
+        if (ability.health <= 0){
+            setActive(false);
+        }
+        //explosion.getAnimation().setEnded(false);
     }
 }

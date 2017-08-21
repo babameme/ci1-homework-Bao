@@ -29,107 +29,63 @@ public class Player extends GameObject implements PhysicsBody{
     private Constraints constraints;
 
     private FrameCounter coolDownCounter;
-    private boolean spellLock;
+    private boolean spellLock, isBlink;
     private BoxCollider boxCollider;
 
     private Ability ability;
-    public Animation left, right, straight, blink;
-    boolean moveLeftRight, isBlink;
+    private Vector2D velocity;
+    private PlayerAnimator animator;
 
     public Player() {
         super();
         this.spellLock = false;
-        straight = new Animation(
-                SpriteUtils.loadImage("assets/images/players/straight/0.png"),
-                SpriteUtils.loadImage("assets/images/players/straight/1.png"),
-                SpriteUtils.loadImage("assets/images/players/straight/2.png"),
-                SpriteUtils.loadImage("assets/images/players/straight/3.png"),
-                SpriteUtils.loadImage("assets/images/players/straight/4.png"),
-                SpriteUtils.loadImage("assets/images/players/straight/5.png"),
-                SpriteUtils.loadImage("assets/images/players/straight/6.png")
-        );
-        left = new Animation(
-                SpriteUtils.loadImage("assets/images/players/left/0.png"),
-                SpriteUtils.loadImage("assets/images/players/left/1.png"),
-                SpriteUtils.loadImage("assets/images/players/left/2.png"),
-                SpriteUtils.loadImage("assets/images/players/left/3.png"),
-                SpriteUtils.loadImage("assets/images/players/left/4.png"),
-                SpriteUtils.loadImage("assets/images/players/left/5.png")
-        );
-        right = new Animation(
-                SpriteUtils.loadImage("assets/images/players/right/0.png"),
-                SpriteUtils.loadImage("assets/images/players/right/1.png"),
-                SpriteUtils.loadImage("assets/images/players/right/2.png"),
-                SpriteUtils.loadImage("assets/images/players/right/3.png"),
-                SpriteUtils.loadImage("assets/images/players/right/4.png"),
-                SpriteUtils.loadImage("assets/images/players/right/5.png")
-        );
-        blink = new Animation(17,
-                SpriteUtils.loadImage("assets/images/players/blink/0.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/1.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/2.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/3.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/4.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/5.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/6.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/7.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/8.png"),
-                SpriteUtils.loadImage("assets/images/players/blink/9.png")
-        );
-        renderer = straight;
+        this.animator = new PlayerAnimator();
+        this.renderer = animator;
         this.coolDownCounter = new FrameCounter(5);
+        ability = new Ability(40, 5, 0);
+        velocity = new Vector2D();
+        isBlink = false;
+
         this.boxCollider = new BoxCollider(8, 8);
         children.add(boxCollider);
-        ability = new Ability(40, 5, 0);
-        isBlink = false;
-        addSpheres();
-    }
 
-    public void setContraints(Constraints contraints) {
-        this.constraints = contraints;
+        addSpheres();
     }
 
     public void run(Vector2D parentPostion) {
         super.run(parentPostion);
-        moveLeftRight = false;
-        if (inputManager.upPressed)
-            position.addUp(0, -SPEED);
-        if (inputManager.downPressed)
-            position.addUp(0, SPEED);
+
+        velocity.set(0,0);
+        if (inputManager.upPressed) {
+            velocity.y -= SPEED;
+        }
+        if (inputManager.downPressed){
+            velocity.y += SPEED;
+        }
         if (inputManager.leftPressed) {
-            position.addUp(-SPEED, 0);
-            if (!isBlink) {
-                moveLeftRight = true;
-                renderer = left;
-            }
+            velocity.x -= SPEED;
         }
         if (inputManager.rightPressed) {
-            position.addUp(SPEED, 0);
-            if (!isBlink) {
-                moveLeftRight = true;
-                renderer = right;
-            }
+            velocity.x += SPEED;
         }
         if (constraints != null) {
             constraints.make(position);
         }
+        position.addUp(velocity);
+        animator.update(this);
         castSpell();
         giveBullet();
         hitEnemy();
         getItem();
-        if (renderer == blink){
-            if (blink.isEnded()){
-                renderer = straight;
-                isBlink = false;
-            }
-            // Else do nothing
-        }
-        else{
-            if (!moveLeftRight){
-                renderer = straight;
-            }
-        }
-        System.out.println(ability.health);
+        //System.out.println(ability.health);
+    }
+
+    public boolean isBlink() {
+        return isBlink;
+    }
+
+    public void setBlink(boolean blink) {
+        isBlink = blink;
     }
 
     private void getItem() {
@@ -157,9 +113,8 @@ public class Player extends GameObject implements PhysicsBody{
                 enemy.getAbility().hurt(this.ability.damage);
                 this.getAbility().hurt(enemy.getAbility().damage);
             }
-            blink.setEnded(false);
-            renderer = blink;
             isBlink = true;
+            animator.getBlinkAnimation().setStopped(false);
         }
     }
 
@@ -167,11 +122,9 @@ public class Player extends GameObject implements PhysicsBody{
         if (inputManager.xPressed && !spellLock) {
             PlayerSpell newSpell = GameObjectPool.recycle(PlayerSpell.class);
             newSpell.getPosition().set(this.position.add(0, -30));
-
             spellLock = true;
             coolDownCounter.reset();
         }
-
         unlockSpell();
     }
 
@@ -197,6 +150,10 @@ public class Player extends GameObject implements PhysicsBody{
         this.inputManager = inputManager;
     }
 
+    public void setContraints(Constraints contraints) {
+        this.constraints = contraints;
+    }
+
     public Ability getAbility() {
         return ability;
     }
@@ -204,5 +161,9 @@ public class Player extends GameObject implements PhysicsBody{
     @Override
     public BoxCollider getBoxCollider() {
         return this.boxCollider;
+    }
+
+    public Vector2D getVelocity() {
+        return velocity;
     }
 }

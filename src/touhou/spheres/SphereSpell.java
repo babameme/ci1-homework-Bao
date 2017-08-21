@@ -6,12 +6,10 @@ import bases.Vector2D;
 import bases.physics.BoxCollider;
 import bases.physics.Physics;
 import bases.physics.PhysicsBody;
-import bases.pools.GameObjectPool;
 import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import touhou.ability.Ability;
 import touhou.enemies.Enemy;
-import touhou.explosions.Explosion;
 
 public class SphereSpell extends GameObject implements PhysicsBody{
     private static final float SPEED = 10;
@@ -50,13 +48,7 @@ public class SphereSpell extends GameObject implements PhysicsBody{
     private void hitEnemy() {
         Enemy enemy = Physics.collideWith(this.boxCollider, Enemy.class);
         if (enemy != null) {
-            enemy.getAbility().hurt(this.ability.damage);
-            Explosion explosion = GameObjectPool.recycle(Explosion.class);
-            explosion.getPosition().set(enemy.getScreenPosition());
-            explosion.getAnimation().setEnded(false);
-            if (enemy.getAbility().health == 0){
-                enemy.setActive(false);
-            }
+            enemy.getHit(ability.damage);
             this.isActive = false;
         }
     }

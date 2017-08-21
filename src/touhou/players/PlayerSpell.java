@@ -4,13 +4,11 @@ import bases.GameObject;
 import bases.physics.BoxCollider;
 import bases.physics.Physics;
 import bases.physics.PhysicsBody;
-import bases.pools.GameObjectPool;
 import tklibs.SpriteUtils;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
 import touhou.ability.Ability;
 import touhou.enemies.Enemy;
-import touhou.explosions.Explosion;
 
 /**
  * Created by huynq on 8/2/17.
@@ -48,13 +46,7 @@ public class PlayerSpell extends GameObject implements PhysicsBody {
 
         Enemy enemy = Physics.collideWith(this.boxCollider, Enemy.class);
         if (enemy != null) {
-            enemy.getAbility().hurt(this.ability.damage);
-            Explosion explosion = GameObjectPool.recycle(Explosion.class);
-            explosion.getPosition().set(enemy.getScreenPosition());
-            explosion.getAnimation().setEnded(false);
-            if (enemy.getAbility().health == 0){
-                enemy.setActive(false);
-            }
+            enemy.getHit(ability.damage);
             this.isActive = false;
         }
     }

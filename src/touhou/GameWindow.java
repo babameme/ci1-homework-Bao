@@ -3,11 +3,12 @@ package touhou;
 import bases.GameObject;
 import tklibs.SpriteUtils;
 import bases.Constraints;
-import touhou.background.Background;
 import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
 import touhou.items.ItemSpawner;
 import touhou.players.Player;
+import touhou.scenes.Level1Scene;
+import touhou.settings.Setting;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -16,6 +17,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
+
+import static javax.swing.text.StyleConstants.Background;
 
 //https://github.com/qhuydtvt/ci1-huynq
 
@@ -27,46 +30,27 @@ public class GameWindow extends Frame {
     private long lastTimeUpdate;
     private long currentTime;
 
+    private BufferedImage blackBackground;
+
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
 
-    private Background background;
     Font font;
     Player player = new Player();
 
-    InputManager inputManager = new InputManager();
+    InputManager inputManager = InputManager.instance;
+    Level1Scene level1Scene;
 
     public GameWindow() {
         pack();
-        addBackground();
-        addPlayer();
-        addEnemySpawner();
-        addItemSpawner();
         setupGameLoop();
         setupWindow();
+        setupLevel();
     }
 
-    private void addItemSpawner() {
-        ItemSpawner itemSpawner = new ItemSpawner();
-        GameObject.add(itemSpawner);
-    }
-
-    private void addEnemySpawner() {
-        EnemySpawner enemySpawner = new EnemySpawner();
-        GameObject.add(enemySpawner);
-    }
-
-    private void addBackground() {
-        background = new Background();
-        GameObject.add(background);
-    }
-
-    private void addPlayer() {
-        player.setInputManager(this.inputManager);
-        player.setContraints(new Constraints(getInsets().top, 768, getInsets().left, 384));
-        player.getPosition().set(384 / 2, 580);
-
-        GameObject.add(player);
+    private void setupLevel() {
+        level1Scene = new Level1Scene();
+        level1Scene.init();
     }
 
     private void setupGameLoop() {
@@ -74,13 +58,18 @@ public class GameWindow extends Frame {
     }
 
     private void setupWindow() {
-        this.setSize(1024, 768);
+        this.setSize(Setting.instance.getWindowWidth(), Setting.instance.getWindowHeight());
 
-        this.setTitle("Touhou - Remade by QHuyDTVT");
+        this.setTitle("Touhou - Remade by Bui Quy Bao");
         this.setVisible(true);
 
         this.backbufferImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         this.backbufferGraphics = (Graphics2D) this.backbufferImage.getGraphics();
+
+        this.blackBackground = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D backgroundGraphics = (Graphics2D) this.blackBackground.getGraphics();
+        backgroundGraphics.setColor(Color.BLACK);
+        backgroundGraphics.fillRect(0,0,this.getWidth(), this.getHeight());
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -104,11 +93,13 @@ public class GameWindow extends Frame {
                 inputManager.keyReleased(e);
             }
         });
-        backbufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-        font = new Font("Serif", Font.PLAIN, 21);
-        backbufferGraphics.setFont(font);
-        backbufferGraphics.setColor(Color.white);
+//        backbufferGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+//                RenderingHints.VALUE_ANTIALIAS_ON);
+//        font = new Font("Serif", Font.PLAIN, 21);
+//        backbufferGraphics.setFont(font);
+//        backbufferGraphics.setColor(Color.white);
+
+        Setting.instance.setWindowInsets(this.getInsets());
     }
 
     public void loop() {
@@ -129,24 +120,19 @@ public class GameWindow extends Frame {
         GameObject.runAll();
     }
 
-    @Override
-    public void update(Graphics g) {
-        g.drawImage(backbufferImage, 0, 0, null);
-    }
     private void render() {
 
-        backbufferGraphics.setColor(Color.black);
-        backbufferGraphics.fillRect(0, 0, 1024, 768);
-
+        backbufferGraphics.drawImage(blackBackground, 0, 0, null);
         GameObject.renderAll(backbufferGraphics);
 
-        backbufferGraphics.drawString("Your health : " + Integer.toString(player.getAbility().health), 400, 50);
-        backbufferGraphics.drawString("Your damage : " + Integer.toString(player.getAbility().damage), 400, 90);
-        backbufferGraphics.drawString("Your power : " + Integer.toString(player.getAbility().power), 400, 130);
+//        backbufferGraphics.drawString("Your health : " + Integer.toString(player.getAbility().health), 400, 50);
+//        backbufferGraphics.drawString("Your damage : " + Integer.toString(player.getAbility().damage), 400, 90);
+//        backbufferGraphics.drawString("Your power : " + Integer.toString(player.getAbility().power), 400, 130);
+//
+//        if (player.getAbility().health <= 0){
+//            backbufferGraphics.drawString("GAMEOVER", 50, 130);
+//        }
 
-        if (player.getAbility().health <= 0){
-            backbufferGraphics.drawString("GAMEOVER", 50, 130);
-        }
-        repaint(); // ask to repaint
+        getGraphics().drawImage(backbufferImage, 0, 0, null);
     }
 }

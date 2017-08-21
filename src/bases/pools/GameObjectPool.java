@@ -15,7 +15,7 @@ public class GameObjectPool {
         for (GameObject gameObject : pool) {
             if (gameObject.getClass().equals(classz)) {
                 if (!gameObject.isActive()) {
-                    gameObject.setActive(true);
+                    gameObject.reset();
                     return (T) gameObject;
                 }
             }

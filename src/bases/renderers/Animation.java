@@ -14,52 +14,60 @@ public class Animation implements Renderer {
 
     private List<BufferedImage> images;
     private FrameCounter frameCounter;
-    private int currentImageIndex;
+    public int currentImageIndex;
     private boolean reverse;
-    private boolean ended;
+    private boolean oneTime;
+    private boolean stopped;
 
-    public Animation(int frameDelay, BufferedImage... images) {
+    public Animation(int frameDelay, boolean oneTime, boolean reverse, BufferedImage... images) {
         this.images = Arrays.asList(images);
         this.frameCounter = new FrameCounter(frameDelay);
-        this.reverse = false;
         this.currentImageIndex = 0;
-        this.ended = false;
+        this.oneTime = oneTime;
+        this.reverse = reverse;
     }
 
     public Animation(BufferedImage... images) {
-        this(12, images);
+        this(12,false, false, images);
     }
 
     @Override
     public void render(Graphics2D g2d, Vector2D position) {
-        BufferedImage image = images.get(currentImageIndex);
-        Vector2D renderPosition = position.subtract(
-                image.getWidth() / 2,
-                image.getHeight() / 2
-        );
-
-        g2d.drawImage(image, (int)renderPosition.x, (int)renderPosition.y, null);
-
-//        if (((reverse && currentImageIndex == images.size() - 1) || ((!reverse) && (currentImageIndex == 0))) &&
-//                (frameCounter.getCount() == 0)){
-//            ended = true;
-//        }
-        if (((reverse && currentImageIndex == 1) || ((!reverse) && currentImageIndex == images.size() - 1)) &&
-        (frameCounter.getCount() == frameCounter.getCountMax())) {
-            ended = true;
+        if (!stopped) {
+            BufferedImage image = images.get(currentImageIndex);
+            Vector2D renderPosition = position.subtract(
+                    image.getWidth() / 2,
+                    image.getHeight() / 2
+            );
+            g2d.drawImage(image, (int) renderPosition.x, (int) renderPosition.y, null);
         }
+        updateCurrentImage();
+    }
+
+    private void updateCurrentImage() {
         if (frameCounter.run()) {
             frameCounter.reset();
             if (!reverse) {
                 currentImageIndex++;
                 if (currentImageIndex >= images.size()) {
-                    currentImageIndex = 0;
+                    // Out of range
+                    if (!oneTime) {
+                        // Repeat animation
+                        currentImageIndex = 0;
+                    } else {
+                        stopped = true;
+                    }
                 }
-            }
-            else{
+            } else {
                 currentImageIndex--;
-                if (currentImageIndex < 0){
-                    currentImageIndex = images.size() - 1;
+                if (currentImageIndex < 0) {
+                    // Out of range
+                    if (!oneTime) {
+                        // Repeat animation
+                        currentImageIndex = images.size() - 1;
+                    } else {
+                        stopped = true;
+                    }
                 }
             }
         }
@@ -69,11 +77,16 @@ public class Animation implements Renderer {
         this.reverse = reverse;
     }
 
-    public boolean isEnded() {
-        return ended;
+    public boolean isStopped() {
+        return stopped;
     }
 
-    public void setEnded(boolean ended) {
-        this.ended = ended;
+    public void setStopped(boolean stopped) {
+        this.stopped = stopped;
+    }
+
+    public void reset(){
+        stopped = false;
+        currentImageIndex = 0;
     }
 }
