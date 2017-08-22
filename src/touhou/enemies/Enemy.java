@@ -29,7 +29,7 @@ public class Enemy extends GameObject implements PhysicsBody {
     public Enemy() {
         super();
         random = new Random();
-        type = random.nextInt(3);
+        type = random.nextInt(2);
         switch (type) {
             case 0:
                 renderer = new Animation(
@@ -38,7 +38,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                         SpriteUtils.loadImage("assets/images/enemies/level0/blue/2.png"),
                         SpriteUtils.loadImage("assets/images/enemies/level0/blue/3.png")
                 );
-                ability = new Ability(25, 3, 0);
+                ability = new Ability(50, 3, 0);
                 break;
             case 1:
                 renderer = new Animation(
@@ -47,29 +47,32 @@ public class Enemy extends GameObject implements PhysicsBody {
                         SpriteUtils.loadImage("assets/images/enemies/level0/pink/2.png"),
                         SpriteUtils.loadImage("assets/images/enemies/level0/pink/3.png")
                 );
-                ability = new Ability(30, 4, 0);
+                ability = new Ability(60, 4, 0);
                 break;
-            case 2:
-                renderer = new Animation(
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/1.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/2.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/4.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/5.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/6.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/7.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/black/8.png")
-                );
-                ability = new Ability(80, 6, 0);
         }
         this.boxCollider = new BoxCollider(20, 20);
         this.children.add(boxCollider);
-
-        addBulletSpawner();
+        addBulletSpawner(type);
     }
 
-    private void addBulletSpawner() {
-        bulletSpawner = new BulletSpawner();
+    public Enemy(int type){
+        super();
+        this.type = type;
+        renderer = new Animation(
+                SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/black/1.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/black/2.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/black/4.png"),
+                SpriteUtils.loadImage("assets/images/enemies/level0/black/5.png")
+        );
+        ability = new Ability(1000, 10, 0);
+        this.boxCollider = new BoxCollider(20, 20);
+        this.children.add(boxCollider);
+        addBulletSpawner(type);
+    }
+
+    private void addBulletSpawner(int type) {
+        bulletSpawner = new BulletSpawner(type);
         children.add(bulletSpawner);
     }
 

@@ -13,6 +13,7 @@ public class Background extends GameObject {
     private ImageRenderer imageRenderer;
     private final float SPEED = 1;
     private final float imageHeight;
+    private boolean stopped;
 
     public Background() {
         super();
@@ -23,14 +24,20 @@ public class Background extends GameObject {
         this.position.set(0, Setting.instance.getGamePlayHeight());
         this.imageHeight = imageRenderer.image.getHeight();
         this.renderer = imageRenderer;
+        stopped = false;
     }
 
     @Override
     public void run(Vector2D parentPosition) {
         super.run(parentPosition);
         position.y += SPEED;
-        if (position.y > imageHeight) {
+        if (position.y >= imageHeight) {
+            //System.out.println(stopped);
             position.y = imageHeight;
+            stopped = true;
         }
+    }
+    public boolean isStopped() {
+        return stopped;
     }
 }

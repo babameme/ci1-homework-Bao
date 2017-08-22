@@ -6,17 +6,13 @@ import bases.physics.BoxCollider;
 import bases.physics.Physics;
 import bases.physics.PhysicsBody;
 import bases.pools.GameObjectPool;
-import bases.renderers.Animation;
-import bases.renderers.Renderer;
 import touhou.ability.Ability;
 import touhou.enemies.Enemy;
 import touhou.enemies.EnemyBullet;
 import touhou.items.Item;
 import touhou.spheres.PlayerSphere;
-import tklibs.SpriteUtils;
 import bases.Constraints;
 import bases.FrameCounter;
-import bases.renderers.ImageRenderer;
 import touhou.inputs.InputManager;
 
 /**

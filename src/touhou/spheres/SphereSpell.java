@@ -10,6 +10,7 @@ import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import touhou.ability.Ability;
 import touhou.enemies.Enemy;
+import touhou.settings.Setting;
 
 public class SphereSpell extends GameObject implements PhysicsBody{
     private static final float SPEED = 10;
@@ -26,7 +27,12 @@ public class SphereSpell extends GameObject implements PhysicsBody{
                 SpriteUtils.loadImage("assets/images/sphere-bullets/2.png"),
                 SpriteUtils.loadImage("assets/images/sphere-bullets/3.png")
         );
-        constraints = new Constraints(0,768,0, 384);
+        constraints = new Constraints(
+                Setting.instance.getWindowInsets().top,
+                Setting.instance.getGamePlayHeight(),
+                Setting.instance.getWindowInsets().left,
+                Setting.instance.getGamePlayWidth()
+        );
         boxCollider = new BoxCollider(20, 20);
         ability = new Ability(2, 1, 0);
         children.add(boxCollider);

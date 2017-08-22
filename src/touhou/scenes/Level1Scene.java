@@ -29,6 +29,7 @@ public class Level1Scene {
     private void addEnemySpawner() {
         enemySpawner = new EnemySpawner();
         GameObject.add(enemySpawner);
+        enemySpawner.setBackground(background);
     }
 
     private void addPlayer() {
@@ -49,5 +50,6 @@ public class Level1Scene {
 
     private void addBackground() {
         background = new Background();
+        GameObject.add(background);
     }
 }

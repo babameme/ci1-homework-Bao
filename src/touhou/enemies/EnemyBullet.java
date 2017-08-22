@@ -12,7 +12,7 @@ import touhou.ability.Ability;
 public class EnemyBullet extends GameObject implements PhysicsBody{
     private BoxCollider boxCollider;
     private Constraints constraints;
-    private Vector2D direction;
+    private Vector2D velocity;
     private Ability ability;
 
     public EnemyBullet() {
@@ -28,7 +28,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         );
         boxCollider = new BoxCollider(14, 14);
         children.add(boxCollider);
-        direction = new Vector2D(0, 4);
+        velocity = new Vector2D(0, 4);
         constraints = new Constraints(0,768,0, 384);
         ability = new Ability(2, 3, 0);
         //System.out.println("Bullet added");
@@ -50,7 +50,11 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
     }
 
     private void fly() {
-        position.addUp(direction);
+        position.addUp(velocity);
+    }
+
+    public Vector2D getVelocity() {
+        return velocity;
     }
 
     @Override

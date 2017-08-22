@@ -1,7 +1,5 @@
 package bases.physics;
 
-import touhou.enemies.Enemy;
-
 import java.util.Vector;
 
 /**
