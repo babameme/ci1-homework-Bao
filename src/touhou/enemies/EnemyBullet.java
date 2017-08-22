@@ -50,7 +50,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
     }
 
     private void fly() {
-        position.addUp(velocity);
+        position.addThis(velocity);
     }
 
     public Vector2D getVelocity() {

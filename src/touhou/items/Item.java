@@ -23,7 +23,7 @@ public class Item extends GameObject implements PhysicsBody{
         super();
         random = new Random();
         type = random.nextInt(100);
-        if (type <= 4){
+        if (type <= 40){
             type = 0;
         }
         else if (type <= 80){
@@ -35,15 +35,15 @@ public class Item extends GameObject implements PhysicsBody{
         switch (type){
             case 0:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/health-up.png"));
-                ability = new Ability(5, 0, 1);
+                ability = new Ability(5, 0, 2);
                 break;
             case 1:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/power-up-blue.png"));
-                ability = new Ability(0, 1, 4);
+                ability = new Ability(0, 1, 10);
                 break;
             case 2:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/power-up-red.png"));
-                ability = new Ability(3, 1, 10);
+                ability = new Ability(3, 1, 15);
                 break;
         }
         //System.out.println("Item created");
@@ -60,7 +60,7 @@ public class Item extends GameObject implements PhysicsBody{
     }
 
     public void fly(){
-        position.addUp(direction);
+        position.addThis(direction);
     }
 
     public Vector2D getDirection() {

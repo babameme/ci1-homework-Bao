@@ -88,9 +88,9 @@ public class GameObject {
         for (GameObject gameObject : gameObjects){
             if (gameObject.isActive()){
                 if (gameObject.getClass().equals(classz)) {
-                    if (gameObject.getScreenPosition().y > position.y){
-                        continue;
-                    }
+//                    if (gameObject.getScreenPosition().y > position.y){
+//                        continue;
+//                    }
                     t = gameObject.getScreenPosition().distance(position);
                     if (t < minDis) {
                         minDis = t;

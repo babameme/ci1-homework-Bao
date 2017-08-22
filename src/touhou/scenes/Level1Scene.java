@@ -13,12 +13,20 @@ public class Level1Scene {
     Background background;
     EnemySpawner enemySpawner;
     ItemSpawner itemSpawner;
+    Panel panel;
 
     public void init(){
         addBackground();
         addPlayer();
+        addPanel();
         addEnemySpawner();
         addItemSpawner();
+    }
+
+    private void addPanel() {
+        panel = new Panel();
+        panel.setAbility(player.getAbility());
+        GameObject.add(panel);
     }
 
     private void addItemSpawner() {

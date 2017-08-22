@@ -39,25 +39,29 @@ public class BulletSpawner extends GameObject{
     }
 
     private void cast1() {
-        for (int i = 1; i <= 6 ; i++) {
-            cast(i * -20, i * -20, 6, 6);
-            cast(i * 20, i * 20, -6, - 6);
-            cast (i * 20, i * -20, -6, 6);
-            cast(i * -20, i * 20, 6, -6);
-            cast(i * 20, 0, -6, 0);
-            cast(i * -20, 0, 6, 0);
-            cast(0, i * 20, 0, -6);
-            cast(0, i * -20, 0, 6);
+        for (int i = 1; i <=2 ; i++) {
+            cast(i * 30, 0, -3, 0);
+            cast(i * -30, 0, 3, 0);
+            cast(0, i * 30, 0, -3);
+            cast(0, i * -30, 0, 3);
+            cast(i * -30, i * -30, 3, 3);
+            cast(i * 30, i * 30, -3, - 3);
+            cast (i * 30, i * -30, -3, 3);
+            cast(i * -30, i * 30, 3, -3);
         }
     }
 
     private void cast0() {
-        for (int i = -3; i <=3 ; i++) {
-            cast(-60, i * 10, 6, -i);
-            cast(60, i * 10, -6, -i);
-            cast(i * 10, 60, -i, -6);
-            cast(i * 10, -60, -i, 6);
+        for (int i = -2; i <=2 ; i++) {
+            cast(-60, i * 30, 3, -i);
+            cast(60, i * 30, -3, -i);
+            cast(i * 30, 60, -i, -3);
+            cast(i * 30, -60, -i, 3);
         }
+    }
+
+    private void cast2(){
+
     }
 
     private void cast(int x, int y, int dx, int dy) {

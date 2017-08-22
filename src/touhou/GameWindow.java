@@ -34,6 +34,7 @@ public class GameWindow extends Frame {
 
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
+    private BufferedImage panel;
 
     Font font;
     Player player = new Player();
@@ -66,10 +67,10 @@ public class GameWindow extends Frame {
         this.backbufferImage = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
         this.backbufferGraphics = (Graphics2D) this.backbufferImage.getGraphics();
 
+        panel = SpriteUtils.loadImage("assets/images/hud/panel.png");
         this.blackBackground = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics2D backgroundGraphics = (Graphics2D) this.blackBackground.getGraphics();
-        backgroundGraphics.setColor(Color.BLACK);
-        backgroundGraphics.fillRect(0,0,this.getWidth(), this.getHeight());
+        backgroundGraphics.drawImage(panel,0,0,null);
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -124,14 +125,6 @@ public class GameWindow extends Frame {
 
         backbufferGraphics.drawImage(blackBackground, 0, 0, null);
         GameObject.renderAll(backbufferGraphics);
-
-//        backbufferGraphics.drawString("Your health : " + Integer.toString(player.getAbility().health), 400, 50);
-//        backbufferGraphics.drawString("Your damage : " + Integer.toString(player.getAbility().damage), 400, 90);
-//        backbufferGraphics.drawString("Your power : " + Integer.toString(player.getAbility().power), 400, 130);
-//
-//        if (player.getAbility().health <= 0){
-//            backbufferGraphics.drawString("GAMEOVER", 50, 130);
-//        }
 
         getGraphics().drawImage(backbufferImage, 0, 0, null);
     }

@@ -4,9 +4,9 @@ public class Ability {
     public int health, damage, power;
 
     public Ability() {
-        health = 1;
-        damage = 1;
-        power = 0;
+        this.health = 1;
+        this.damage = 1;
+        this.power = 0;
     }
 
     public Ability(int health, int damage, int power) {
@@ -24,7 +24,7 @@ public class Ability {
     public void add(Ability other){
         this.health += other.health;
         //this.damage += other.damage;
-        this.power += other.damage;
+        this.power += other.power;
     }
     public void setHealth(int health) {
         this.health = health;
@@ -36,5 +36,11 @@ public class Ability {
 
     public void setPower(int power) {
         this.power = power;
+    }
+
+    public void set(int a, int b, int c){
+        health = a;
+        damage = b;
+        power = c;
     }
 }

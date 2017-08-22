@@ -14,10 +14,12 @@ import touhou.settings.Setting;
 
 public class SphereSpell extends GameObject implements PhysicsBody{
     private static final float SPEED = 10;
+    private static final float ENEMY_PULL_FORCE = 1;
     private BoxCollider boxCollider;
     private Constraints constraints;
     private Vector2D direction;
     private Ability ability;
+    private Enemy focusEnemy = null;
 
     public SphereSpell(){
         super();
@@ -34,7 +36,7 @@ public class SphereSpell extends GameObject implements PhysicsBody{
                 Setting.instance.getGamePlayWidth()
         );
         boxCollider = new BoxCollider(20, 20);
-        ability = new Ability(2, 1, 0);
+        ability = new Ability(2, 2, 0);
         children.add(boxCollider);
         direction = new Vector2D(0, -SPEED);
     }
@@ -60,19 +62,17 @@ public class SphereSpell extends GameObject implements PhysicsBody{
     }
 
     private void shoot() {
-        float dx, dy, h;
-        Enemy enemy = GameObject.minDistanceWith(this.screenPosition, Enemy.class);
-        if (enemy != null){
-            dx = enemy.getScreenPosition().x - this.screenPosition.x;
-            dy = enemy.getScreenPosition().y - this.screenPosition.y;
-            h = (float) Math.sqrt(dx * dx + dy * dy);
-            direction.x = (int) (dx / h * SPEED);
-            direction.y = (int) (dy / h * SPEED);
+        if ((focusEnemy == null) || (!focusEnemy.isActive())) {
+            focusEnemy = GameObject.minDistanceWith(this.screenPosition, Enemy.class);
+        }
+        if (focusEnemy != null) {
+            Vector2D toEnemy = focusEnemy.getScreenPosition().subtract(this.screenPosition).normalizeThis().multiplyThis(ENEMY_PULL_FORCE);
+            this.direction.addThis(toEnemy).normalizeThis().multiplyThis(SPEED);
         }
     }
 
     private void fly() {
-        position.addUp(direction);
+        position.addThis(direction);
     }
 
     @Override

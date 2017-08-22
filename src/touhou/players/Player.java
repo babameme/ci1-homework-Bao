@@ -31,6 +31,7 @@ public class Player extends GameObject implements PhysicsBody{
     private Ability ability;
     private Vector2D velocity;
     private PlayerAnimator animator;
+    private SpellSpawner spellSpawner;
 
     public Player() {
         super();
@@ -46,6 +47,13 @@ public class Player extends GameObject implements PhysicsBody{
         children.add(boxCollider);
 
         addSpheres();
+        addSpellSpawner();
+    }
+
+    private void addSpellSpawner() {
+        spellSpawner = new SpellSpawner();
+        spellSpawner.setAbility(ability);;
+        spellSpawner.setScreenPosition(this.position);
     }
 
     public void run(Vector2D parentPostion) {
@@ -67,7 +75,7 @@ public class Player extends GameObject implements PhysicsBody{
         if (constraints != null) {
             constraints.make(position);
         }
-        position.addUp(velocity);
+        position.addThis(velocity);
         animator.update(this);
         castSpell();
         giveBullet();
@@ -116,8 +124,7 @@ public class Player extends GameObject implements PhysicsBody{
 
     private void castSpell() {
         if (inputManager.xPressed && !spellLock) {
-            PlayerSpell newSpell = GameObjectPool.recycle(PlayerSpell.class);
-            newSpell.getPosition().set(this.position.add(0, -30));
+            spellSpawner.run();
             spellLock = true;
             coolDownCounter.reset();
         }
