@@ -27,6 +27,25 @@ public class Enemy extends GameObject implements PhysicsBody {
     private Random random;
     private Vector2D velocity;
     private Constraints constraints;
+    private static Animation blueAnimation = new Animation(
+            SpriteUtils.loadImage("assets/images/enemies/level0/blue/0.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/blue/1.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/blue/2.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/blue/3.png")
+    );
+    private static Animation pinkAnimation = new Animation(
+            SpriteUtils.loadImage("assets/images/enemies/level0/pink/0.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/pink/1.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/pink/2.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/pink/3.png")
+    );
+    private static Animation blackAnimation = new Animation(
+            SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/black/1.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/black/2.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/black/4.png"),
+            SpriteUtils.loadImage("assets/images/enemies/level0/black/5.png")
+    );
 
     public Enemy() {
         super();
@@ -36,21 +55,9 @@ public class Enemy extends GameObject implements PhysicsBody {
         constraints = new Constraints(0, Setting.instance.getGamePlayHeight(),0, Setting.instance.getGamePlayWidth());
         switch (type) {
             case 0:
-                renderer = new Animation(
-                        SpriteUtils.loadImage("assets/images/enemies/level0/blue/0.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/blue/1.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/blue/2.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/blue/3.png")
-                );
                 setDefault(0);
                 break;
             case 1:
-                renderer = new Animation(
-                        SpriteUtils.loadImage("assets/images/enemies/level0/pink/0.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/pink/1.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/pink/2.png"),
-                        SpriteUtils.loadImage("assets/images/enemies/level0/pink/3.png")
-                );
                 setDefault(1);
                 break;
         }
@@ -65,13 +72,6 @@ public class Enemy extends GameObject implements PhysicsBody {
         this.type = type;
         ability = new Ability();
         constraints = new Constraints(0, Setting.instance.getGamePlayHeight(),0, Setting.instance.getGamePlayWidth());
-        renderer = new Animation(
-                SpriteUtils.loadImage("assets/images/enemies/level0/black/0.png"),
-                SpriteUtils.loadImage("assets/images/enemies/level0/black/1.png"),
-                SpriteUtils.loadImage("assets/images/enemies/level0/black/2.png"),
-                SpriteUtils.loadImage("assets/images/enemies/level0/black/4.png"),
-                SpriteUtils.loadImage("assets/images/enemies/level0/black/5.png")
-        );
         setDefault(2);
         this.boxCollider = new BoxCollider(20, 20);
         this.children.add(boxCollider);
@@ -118,12 +118,15 @@ public class Enemy extends GameObject implements PhysicsBody {
     public void setDefault(int type){
         switch (type){
             case 0:
+                renderer = blueAnimation;
                 setAbility(50, 3, 0);
                 break;
             case 1:
+                renderer = pinkAnimation;
                 setAbility(60, 4, 0);
                 break;
             case 2:
+                renderer = blackAnimation;
                 setAbility(400, 10, 0);
         }
     }

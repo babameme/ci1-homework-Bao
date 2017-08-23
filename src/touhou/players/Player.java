@@ -41,7 +41,7 @@ public class Player extends GameObject implements PhysicsBody{
         this.renderer = animator;
         this.score = 0;
         this.coolDownCounter = new FrameCounter(5);
-        ability = new Ability(30, 5, 0);
+        ability = new Ability(40, 5, 0);
         velocity = new Vector2D();
         isBlink = false;
 
