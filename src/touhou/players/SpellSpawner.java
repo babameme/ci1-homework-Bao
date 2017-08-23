@@ -45,7 +45,7 @@ public class SpellSpawner{
     }
 
     private void shoot() {
-        System.out.println("####" + type);
+        //System.out.println("####" + type);
         switch (type){
             case 0 :
                 PlayerSpell playerSpell = GameObjectPool.recycle(PlayerSpell.class);
@@ -77,6 +77,17 @@ public class SpellSpawner{
                 spell1 = GameObjectPool.recycle(PlayerSpell.class);
                 spell2 = GameObjectPool.recycle(PlayerSpell.class);
                 PlayerSpell spell3 = GameObjectPool.recycle(PlayerSpell.class);
+                spell1.setDefault(0);
+                spell2.setDefault(0);
+                spell3.setDefault(0);
+                spell1.getPosition().set(this.screenPosition.add(-25, -30));
+                spell2.getPosition().set(this.screenPosition.add(25, -30));
+                spell3.getPosition().set(this.screenPosition.add(0, -30));
+                break;
+            case 5:
+                spell1 = GameObjectPool.recycle(PlayerSpell.class);
+                spell2 = GameObjectPool.recycle(PlayerSpell.class);
+                spell3 = GameObjectPool.recycle(PlayerSpell.class);
                 spell1.setDefault(1);
                 spell2.setDefault(1);
                 spell3.setDefault(1);

@@ -36,7 +36,7 @@ public class SphereSpell extends GameObject implements PhysicsBody{
                 Setting.instance.getGamePlayWidth()
         );
         boxCollider = new BoxCollider(20, 20);
-        ability = new Ability(2, 2, 0);
+        ability = new Ability(2, 1, 0);
         children.add(boxCollider);
         direction = new Vector2D(0, -SPEED);
     }

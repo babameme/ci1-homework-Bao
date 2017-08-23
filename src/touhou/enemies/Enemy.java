@@ -9,6 +9,7 @@ import bases.renderers.Animation;
 import tklibs.SpriteUtils;
 import bases.Vector2D;
 import touhou.ability.Ability;
+import touhou.players.Player;
 import touhou.settings.Setting;
 
 import java.util.Random;
@@ -123,7 +124,7 @@ public class Enemy extends GameObject implements PhysicsBody {
                 setAbility(60, 4, 0);
                 break;
             case 2:
-                setAbility(300, 10, 0);
+                setAbility(400, 10, 0);
         }
     }
 
@@ -137,7 +138,22 @@ public class Enemy extends GameObject implements PhysicsBody {
         explosion.getPosition().set(this.position);
         if (ability.health <= 0){
             setActive(false);
+            addScore(this.type);
         }
         //explosion.getAnimation().setEnded(false);
+    }
+
+    public void addScore(int type){
+        switch (type){
+            case 0:
+                Player.score += 5;
+                break;
+            case 1:
+                Player.score += 7;
+                break;
+            case 2:
+                Player.score += 20;
+                break;
+        }
     }
 }

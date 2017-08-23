@@ -32,7 +32,7 @@ public class BulletSpawner extends GameObject{
                     cast1();
                     break;
                 case 2 :
-                    //cast2();
+                    cast2();
                     break;
             }
         }
@@ -61,7 +61,11 @@ public class BulletSpawner extends GameObject{
     }
 
     private void cast2(){
-
+        for (int i = 1; i <= 8 ; i++) {
+            for (int j = -6; j <= 6 ; j++) {
+                cast(j * 15, i * 30, j, 4);
+            }
+        }
     }
 
     private void cast(int x, int y, int dx, int dy) {

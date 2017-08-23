@@ -35,21 +35,21 @@ public class Item extends GameObject implements PhysicsBody{
         switch (type){
             case 0:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/health-up.png"));
-                ability = new Ability(5, 0, 2);
+                ability = new Ability(3, 0, 2);
                 break;
             case 1:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/power-up-blue.png"));
-                ability = new Ability(0, 1, 10);
+                ability = new Ability(0, 1, 4);
                 break;
             case 2:
                 renderer = new ImageRenderer(SpriteUtils.loadImage("assets/images/items/power-up-red.png"));
-                ability = new Ability(3, 1, 15);
+                ability = new Ability(3, 1, 8);
                 break;
         }
         //System.out.println("Item created");
-        direction = new Vector2D(0, 4);
+        direction = new Vector2D(0, 3);
         constraints = new Constraints(31, 650, 8, 384);
-        boxCollider = new BoxCollider(20,20);
+        boxCollider = new BoxCollider(25,25);
         this.children.add(boxCollider);
     }
 

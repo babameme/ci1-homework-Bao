@@ -38,6 +38,13 @@ public class Ability {
         this.power = power;
     }
 
+    public void reducePower(int t){
+        this.power -= t;
+        if (this.power < 0){
+            this.power = 0;
+        }
+    }
+
     public void set(int a, int b, int c){
         health = a;
         damage = b;

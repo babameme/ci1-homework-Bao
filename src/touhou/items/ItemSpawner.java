@@ -23,10 +23,10 @@ public class ItemSpawner extends GameObject{
         super.run(parentPosition);
         if (spawnCounter.run()){
             spawnCounter.reset();
-            //Item item = new Item();
-            Item item = GameObjectPool.recycle(Item.class);
-            item.getPosition().set(random.nextInt(384), 20);
-            //GameObject.add(item);
+            for (int i = 0; i < 3; i++) {
+                Item item = GameObjectPool.recycle(Item.class);
+                item.getPosition().set(random.nextInt(384), 20);
+            }
         }
     }
 }
