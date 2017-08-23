@@ -3,6 +3,7 @@ package touhou;
 import bases.GameObject;
 import tklibs.SpriteUtils;
 import bases.Constraints;
+import touhou.enemies.Enemy;
 import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
 import touhou.items.ItemSpawner;
@@ -125,7 +126,7 @@ public class GameWindow extends Frame {
 
     private void run() {
         GameObject.runAll();
-        if ((Player.ability == null || Player.ability.health <= 0) && !gameOver){
+        if ((Player.ability == null || Player.ability.health <= 0 || (EnemySpawner.addedBoss && (EnemySpawner.bossAbility == null || EnemySpawner.bossAbility.health <= 0))) && !gameOver){
             //System.out.println("Ended");
             Level1Scene.deleteAll();
             setupGameOver();

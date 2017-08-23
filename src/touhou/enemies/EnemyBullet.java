@@ -30,7 +30,7 @@ public class EnemyBullet extends GameObject implements PhysicsBody{
         children.add(boxCollider);
         velocity = new Vector2D(0, 4);
         constraints = new Constraints(0,768,0, 384);
-        ability = new Ability(2, 3, 5);
+        ability = new Ability(2, 2, 5);
         //System.out.println("Bullet added");
     }
 

@@ -5,6 +5,7 @@ import bases.GameObject;
 import bases.Vector2D;
 import bases.physics.Physics;
 import bases.pools.GameObjectPool;
+import touhou.ability.Ability;
 import touhou.scenes.Background;
 
 import java.util.ArrayList;
@@ -18,10 +19,11 @@ public class EnemySpawner extends GameObject{
     private FrameCounter spawnCounter;
     private Random random;
     private Background background;
-    private boolean addedBoss;
+    public static boolean addedBoss;
+    public static Ability bossAbility;
 
     public EnemySpawner() {
-        spawnCounter = new FrameCounter(90);
+        spawnCounter = new FrameCounter(110);
         random = new Random();
         addedBoss = false;
     }
@@ -45,6 +47,7 @@ public class EnemySpawner extends GameObject{
             Enemy enemy = new Enemy(2);
             enemy.getPosition().set(192, 60);
             addedBoss = true;
+            bossAbility = enemy.getAbility();
             GameObject.add(enemy);
         }
     }
