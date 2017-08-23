@@ -75,7 +75,7 @@ public class Enemy extends GameObject implements PhysicsBody {
         setDefault(2);
         this.boxCollider = new BoxCollider(20, 20);
         this.children.add(boxCollider);
-        this.velocity = new Vector2D();
+        this.velocity = new Vector2D(-1, 0);
         addBulletSpawner(type);
     }
 
@@ -89,7 +89,11 @@ public class Enemy extends GameObject implements PhysicsBody {
         fly();
         shoot();
         if (constraints.isOut(this.screenPosition)){
-            this.setActive(false);
+            if (type == 2){
+                position.set(350, 60);
+            }else {
+                this.setActive(false);
+            }
         }
     }
 
@@ -119,11 +123,11 @@ public class Enemy extends GameObject implements PhysicsBody {
         switch (type){
             case 0:
                 renderer = blueAnimation;
-                setAbility(50, 3, 0);
+                setAbility(50, 5, 0);
                 break;
             case 1:
                 renderer = pinkAnimation;
-                setAbility(60, 4, 0);
+                setAbility(60, 6, 0);
                 break;
             case 2:
                 renderer = blackAnimation;

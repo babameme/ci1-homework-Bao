@@ -14,7 +14,7 @@ public class BulletSpawner extends GameObject{
 
     public BulletSpawner(int type){
         super();
-        spawnCounter = new FrameCounter(150);
+        spawnCounter = new FrameCounter(130);
         random = new Random();
         this.type = type;
     }

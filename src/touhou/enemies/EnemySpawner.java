@@ -23,7 +23,7 @@ public class EnemySpawner extends GameObject{
     public static Ability bossAbility;
 
     public EnemySpawner() {
-        spawnCounter = new FrameCounter(110);
+        spawnCounter = new FrameCounter(100);
         random = new Random();
         addedBoss = false;
     }
@@ -39,13 +39,13 @@ public class EnemySpawner extends GameObject{
             if (spawnCounter.run()) {
                 spawnCounter.reset();
                 Enemy enemy = GameObjectPool.recycle(Enemy.class);
-                enemy.getPosition().set(random.nextInt(384), 100);
+                enemy.getPosition().set(random.nextInt(384), 30);
                 enemy.setDefault(enemy.getType());
             }
         }else if (!addedBoss){
             //System.out.println("Boss added");
             Enemy enemy = new Enemy(2);
-            enemy.getPosition().set(192, 60);
+            enemy.getPosition().set(370, 60);
             addedBoss = true;
             bossAbility = enemy.getAbility();
             GameObject.add(enemy);

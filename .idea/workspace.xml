@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef7fe01c-2fb1-4c3b-b4e2-548131a31b3a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/GameWindow$1.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/GameWindow$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/GameWindow$2.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/GameWindow$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/GameWindow.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/GameWindow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/BulletSpawner.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/BulletSpawner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemyBullet.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemyBullet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/Enemy.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/Enemy.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemySpawner.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/enemies/EnemySpawner.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/Player.class" afterPath="$PROJECT_DIR$/out/production/ci-begin/touhou/players/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/GameWindow.java" afterPath="$PROJECT_DIR$/src/touhou/GameWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" afterPath="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/touhou/players/Player.java" afterPath="$PROJECT_DIR$/src/touhou/players/Player.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Enemy.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-477">
-              <caret line="73" column="118" lean-forward="false" selection-start-line="73" selection-start-column="118" selection-end-line="73" selection-end-column="118" />
+            <state relative-caret-position="238">
+              <caret line="131" column="19" lean-forward="true" selection-start-line="131" selection-start-column="19" selection-end-line="131" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -45,8 +40,8 @@
       <file leaf-file-name="BulletSpawner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+            <state relative-caret-position="187">
+              <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -101,18 +96,18 @@
       <file leaf-file-name="EnemySpawner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+            <state relative-caret-position="187">
+              <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+            <state relative-caret-position="510">
+              <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -192,13 +187,13 @@
         <option value="$PROJECT_DIR$/src/touhou/scenes/Level1Scene.java" />
         <option value="$PROJECT_DIR$/src/touhou/scenes/GameOverScene.java" />
         <option value="$PROJECT_DIR$/src/touhou/scenes/GameOverBackground.java" />
-        <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
         <option value="$PROJECT_DIR$/src/touhou/enemies/EnemyBullet.java" />
-        <option value="$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java" />
-        <option value="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
         <option value="$PROJECT_DIR$/src/touhou/GameWindow.java" />
-        <option value="$PROJECT_DIR$/src/touhou/scenes/Background.java" />
         <option value="$PROJECT_DIR$/src/touhou/players/Player.java" />
+        <option value="$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java" />
+        <option value="$PROJECT_DIR$/src/touhou/scenes/Background.java" />
+        <option value="$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java" />
+        <option value="$PROJECT_DIR$/src/touhou/enemies/Enemy.java" />
       </list>
     </option>
   </component>
@@ -1010,26 +1005,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
+    <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-477">
-          <caret line="73" column="118" lean-forward="false" selection-start-line="73" selection-start-column="118" selection-end-line="73" selection-end-column="118" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="43" column="9" lean-forward="true" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="49" column="45" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+        <state relative-caret-position="510">
+          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1046,6 +1025,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/BulletSpawner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/touhou/scenes/Background.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1054,10 +1041,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/touhou/players/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/EnemySpawner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        <state relative-caret-position="187">
+          <caret line="41" column="62" lean-forward="false" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/touhou/enemies/Enemy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="131" column="19" lean-forward="true" selection-start-line="131" selection-start-column="19" selection-end-line="131" selection-end-column="19" />
           <folding />
         </state>
       </provider>
