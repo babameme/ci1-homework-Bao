@@ -135,4 +135,9 @@ public class GameObject {
         this.isActive = true;
         this.isRenewing = true;
     }
+
+    public static void deleteAll(){
+        gameObjects.clear();
+        newGameObjects.clear();
+    }
 }

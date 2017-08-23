@@ -2,6 +2,8 @@ package touhou.scenes;
 
 import bases.Constraints;
 import bases.GameObject;
+import bases.physics.Physics;
+import bases.pools.GameObjectPool;
 import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
 import touhou.items.ItemSpawner;
@@ -9,7 +11,7 @@ import touhou.players.Player;
 import touhou.settings.Setting;
 
 public class Level1Scene {
-    Player player;
+    private Player player;
     Background background;
     EnemySpawner enemySpawner;
     ItemSpawner itemSpawner;
@@ -59,5 +61,11 @@ public class Level1Scene {
     private void addBackground() {
         background = new Background();
         GameObject.add(background);
+    }
+
+    public static void deleteAll(){
+        GameObject.deleteAll();
+        GameObjectPool.deleteAll();
+        Physics.deleteAll();
     }
 }

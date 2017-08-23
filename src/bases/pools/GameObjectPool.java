@@ -32,4 +32,8 @@ public class GameObjectPool {
             return null;
         }
     }
+
+    public static void deleteAll(){
+        pool.clear();
+    }
 }

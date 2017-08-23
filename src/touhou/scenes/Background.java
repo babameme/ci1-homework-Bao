@@ -1,5 +1,6 @@
 package touhou.scenes;
 
+import bases.FrameCounter;
 import bases.GameObject;
 import bases.Vector2D;
 import bases.renderers.ImageRenderer;
@@ -11,9 +12,10 @@ import touhou.settings.Setting;
  */
 public class Background extends GameObject {
     private ImageRenderer imageRenderer;
-    private final float SPEED = 1;
+    private final float SPEED = 2;
     private final float imageHeight;
     private boolean stopped;
+    private FrameCounter counter;
 
     public Background() {
         super();
@@ -25,16 +27,20 @@ public class Background extends GameObject {
         this.imageHeight = imageRenderer.image.getHeight();
         this.renderer = imageRenderer;
         stopped = false;
+        counter = new FrameCounter(3);
     }
 
     @Override
     public void run(Vector2D parentPosition) {
-        super.run(parentPosition);
-        position.y += SPEED;
-        if (position.y >= imageHeight) {
-            //System.out.println(stopped);
-            position.y = imageHeight;
-            stopped = true;
+        if (counter.run()) {
+            super.run(parentPosition);
+            position.y += SPEED;
+            if (position.y >= imageHeight) {
+                //System.out.println(stopped);
+                position.y = imageHeight;
+                stopped = true;
+            }
+            counter.reset();
         }
     }
     public boolean isStopped() {

@@ -7,6 +7,7 @@ import touhou.enemies.EnemySpawner;
 import touhou.inputs.InputManager;
 import touhou.items.ItemSpawner;
 import touhou.players.Player;
+import touhou.scenes.GameOverScene;
 import touhou.scenes.Level1Scene;
 import touhou.settings.Setting;
 
@@ -35,12 +36,13 @@ public class GameWindow extends Frame {
     private BufferedImage backbufferImage;
     private Graphics2D backbufferGraphics;
     private BufferedImage panel;
+    private boolean gameOver;
 
     Font font;
-    Player player = new Player();
 
     InputManager inputManager = InputManager.instance;
     Level1Scene level1Scene;
+    GameOverScene gameOverScene;
 
     public GameWindow() {
         pack();
@@ -52,6 +54,10 @@ public class GameWindow extends Frame {
     private void setupLevel() {
         level1Scene = new Level1Scene();
         level1Scene.init();
+    }
+
+    private void setupGameOver(){
+        gameOverScene = new GameOverScene();
     }
 
     private void setupGameLoop() {
@@ -119,6 +125,12 @@ public class GameWindow extends Frame {
 
     private void run() {
         GameObject.runAll();
+        if ((Player.ability == null || Player.ability.health <= 0) && !gameOver){
+            //System.out.println("Ended");
+            Level1Scene.deleteAll();
+            setupGameOver();
+            gameOver = true;
+        }
     }
 
     private void render() {

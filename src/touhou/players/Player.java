@@ -28,7 +28,7 @@ public class Player extends GameObject implements PhysicsBody{
     private boolean spellLock, isBlink;
     private BoxCollider boxCollider;
 
-    private Ability ability;
+    public static Ability ability;
     private Vector2D velocity;
     private PlayerAnimator animator;
     private SpellSpawner spellSpawner;
@@ -171,5 +171,9 @@ public class Player extends GameObject implements PhysicsBody{
 
     public Vector2D getVelocity() {
         return velocity;
+    }
+
+    public void setSpellLock(boolean spellLock) {
+        this.spellLock = spellLock;
     }
 }
